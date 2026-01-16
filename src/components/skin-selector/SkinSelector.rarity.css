@@ -1,0 +1,62 @@
+/**
+ * File: SkinSelector.rarity.css
+ * Author: Wildflover
+ * Description: Rarity badge styles for preview section
+ * Language: CSS
+ */
+
+/* [RARITY-BADGE] Rarity badge with icon and name */
+.rarity-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.35rem 0.6rem;
+  border-radius: 4px;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  backdrop-filter: blur(4px);
+  height: 28px;
+  box-sizing: border-box;
+}
+
+.rarity-badge .rarity-name {
+  line-height: 1;
+}
+
+.rarity-badge.rarity-epic {
+  background: linear-gradient(135deg, rgba(30, 144, 255, 0.25) 0%, rgba(65, 105, 225, 0.2) 100%);
+  border: 1px solid rgba(30, 144, 255, 0.5);
+  color: #5dade2;
+}
+
+.rarity-badge.rarity-legendary {
+  background: linear-gradient(135deg, rgba(255, 120, 50, 0.25) 0%, rgba(255, 80, 30, 0.2) 100%);
+  border: 1px solid rgba(255, 100, 50, 0.5);
+  color: #f5a962;
+}
+
+.rarity-badge.rarity-mythic {
+  background: linear-gradient(135deg, rgba(186, 85, 211, 0.25) 0%, rgba(148, 0, 211, 0.2) 100%);
+  border: 1px solid rgba(186, 85, 211, 0.5);
+  color: #d8a0e8;
+}
+
+.rarity-badge.rarity-ultimate {
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.25) 0%, rgba(255, 180, 0, 0.2) 100%);
+  border: 1px solid rgba(255, 200, 50, 0.5);
+  color: #f7dc6f;
+}
+
+.rarity-badge.rarity-transcendent {
+  background: linear-gradient(135deg, rgba(0, 255, 200, 0.25) 0%, rgba(0, 200, 180, 0.2) 100%);
+  border: 1px solid rgba(0, 255, 200, 0.5);
+  color: #76d7c4;
+}
+
+.rarity-badge.rarity-exalted {
+  background: linear-gradient(135deg, rgba(180, 220, 100, 0.25) 0%, rgba(150, 200, 80, 0.2) 100%);
+  border: 1px solid rgba(180, 220, 100, 0.5);
+  color: #c8e878;
+}

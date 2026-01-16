@@ -1,0 +1,200 @@
+/**
+ * File: SkinSelector.chroma.css
+ * Author: Wildflover
+ * Description: Chroma selector and preview tooltip styles
+ * Language: CSS
+ */
+
+/* [CHROMA-INLINE] Minimal inline chroma selector */
+.chroma-inline {
+  margin-top: 0.75rem;
+}
+
+.chroma-inline-colors {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  flex-wrap: wrap;
+}
+
+/* [CHROMA-DOT] Clean chroma color buttons */
+.chroma-dot {
+  width: 30px;
+  height: 30px;
+  min-width: 30px;
+  min-height: 30px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.18);
+  background-color: var(--chroma-color);
+  background-image: var(--chroma-gradient);
+  background-origin: border-box;
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  box-sizing: border-box;
+  flex-shrink: 0;
+}
+
+.chroma-dot::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+}
+
+.chroma-dot::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.3) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.chroma-dot:hover {
+  transform: scale(1.15);
+  border-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 14px var(--chroma-color);
+}
+
+.chroma-dot:hover::before {
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* [CHROMA-ACTIVE] Selected chroma with glowing ring effect */
+.chroma-dot.active {
+  transform: scale(1.1);
+  border-color: #fff;
+  box-shadow: 
+    0 0 0 3px rgba(12, 8, 20, 0.9),
+    0 0 20px var(--chroma-color),
+    0 0 40px color-mix(in srgb, var(--chroma-color) 50%, transparent);
+}
+
+.chroma-dot.active::before {
+  border-color: var(--chroma-color);
+  animation: chromaRingPulse 2s ease-in-out infinite;
+}
+
+@keyframes chromaRingPulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.1);
+  }
+}
+
+/* [CHROMA-CHECKMARK] Selected indicator inside dot */
+.chroma-dot.active .chroma-check {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.chroma-check {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: scale(0.5);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+}
+
+.chroma-check svg {
+  width: 14px;
+  height: 14px;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.8));
+}
+
+/* [CHROMA-PREVIEW-TOOLTIP] Sharp professional preview popup */
+.chroma-preview-tooltip {
+  position: fixed;
+  transform: translateX(-50%) translateY(-100%);
+  padding: 0;
+  background: rgba(12, 8, 20, 0.98);
+  border: 1px solid rgba(201, 75, 124, 0.4);
+  border-radius: 6px;
+  z-index: 999999;
+  pointer-events: none;
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.7),
+    0 0 0 1px rgba(0, 0, 0, 0.3);
+  animation: chromaPreviewFadeIn 0.15s ease-out;
+  overflow: hidden;
+  width: 160px;
+}
+
+@keyframes chromaPreviewFadeIn {
+  0% { 
+    opacity: 0; 
+    transform: translateX(-50%) translateY(-95%); 
+  }
+  100% { 
+    opacity: 1; 
+    transform: translateX(-50%) translateY(-100%); 
+  }
+}
+
+.chroma-preview-image-wrapper {
+  width: 100%;
+  aspect-ratio: 1;
+  overflow: hidden;
+  position: relative;
+  background: rgba(0, 0, 0, 0.4);
+  border-bottom: 1px solid rgba(201, 75, 124, 0.25);
+}
+
+.chroma-preview-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+
+.chroma-preview-info {
+  padding: 10px 12px;
+  background: rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+.chroma-preview-accent-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--preview-accent, #ff69b4);
+}
+
+.chroma-preview-name {
+  font-size: 11px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.95);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+  text-align: center;
+}
+
+/* [CHROMA-PREVIEW-ARROW] Bottom arrow indicator */
+.chroma-preview-arrow {
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+  width: 8px;
+  height: 8px;
+  background: rgba(0, 0, 0, 0.3);
+  border-right: 1px solid rgba(201, 75, 124, 0.4);
+  border-bottom: 1px solid rgba(201, 75, 124, 0.4);
+}

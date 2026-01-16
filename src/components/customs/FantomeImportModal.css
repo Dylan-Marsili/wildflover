@@ -1,0 +1,346 @@
+/**
+ * File: FantomeImportModal.css
+ * Author: Wildflover
+ * Description: Professional styling for .fantome file import confirmation modal
+ * Language: CSS
+ */
+
+/* ============================================================================
+   [BACKDROP] Modal overlay with blur effect
+   ============================================================================ */
+
+.fantome-import-backdrop {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(5, 2, 12, 0.85);
+  backdrop-filter: blur(12px);
+  z-index: 10000;
+  animation: fantomeBackdropFadeIn 0.2s ease-out;
+}
+
+@keyframes fantomeBackdropFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ============================================================================
+   [MODAL] Main modal container
+   ============================================================================ */
+
+.fantome-import-modal {
+  display: flex;
+  flex-direction: column;
+  width: 420px;
+  max-width: 90vw;
+  background: linear-gradient(
+    165deg,
+    rgba(18, 10, 28, 0.98) 0%,
+    rgba(12, 6, 20, 0.99) 100%
+  );
+  border: 1px solid rgba(201, 75, 124, 0.25);
+  border-radius: 16px;
+  box-shadow: 
+    0 24px 80px rgba(0, 0, 0, 0.6),
+    0 0 60px rgba(201, 75, 124, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.03);
+  overflow: hidden;
+  animation: fantomeModalSlideIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes fantomeModalSlideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.92) translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* ============================================================================
+   [HEADER] Modal header section
+   ============================================================================ */
+
+.fantome-import-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem 1.5rem 1rem;
+  border-bottom: 1px solid rgba(201, 75, 124, 0.12);
+}
+
+.fantome-import-icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(
+    135deg,
+    rgba(201, 75, 124, 0.15) 0%,
+    rgba(201, 75, 124, 0.08) 100%
+  );
+  border: 1px solid rgba(201, 75, 124, 0.3);
+  border-radius: 12px;
+  flex-shrink: 0;
+}
+
+.fantome-import-icon svg {
+  width: 24px;
+  height: 24px;
+  color: #c94b7c;
+}
+
+.fantome-import-title-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.fantome-import-title {
+  font-size: 1.125rem;
+  font-weight: 700;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.95);
+  letter-spacing: -0.3px;
+}
+
+.fantome-import-subtitle {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.4);
+  letter-spacing: 0.02em;
+}
+
+/* ============================================================================
+   [CONTENT] Modal content section
+   ============================================================================ */
+
+.fantome-import-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding: 1.5rem;
+}
+
+/* [FILE-CARD] File information card */
+.fantome-import-file-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(201, 75, 124, 0.15);
+  border-radius: 12px;
+  transition: all 0.2s ease;
+}
+
+.fantome-import-file-card:hover {
+  border-color: rgba(201, 75, 124, 0.25);
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.fantome-import-file-icon {
+  position: relative;
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(
+    145deg,
+    rgba(201, 75, 124, 0.12) 0%,
+    rgba(201, 75, 124, 0.06) 100%
+  );
+  border: 1px solid rgba(201, 75, 124, 0.2);
+  border-radius: 10px;
+  flex-shrink: 0;
+}
+
+.fantome-import-file-icon svg {
+  width: 26px;
+  height: 26px;
+  color: rgba(255, 179, 217, 0.7);
+}
+
+.fantome-import-file-ext {
+  position: absolute;
+  bottom: -4px;
+  right: -4px;
+  padding: 2px 5px;
+  font-size: 8px;
+  font-weight: 700;
+  color: #c94b7c;
+  background: rgba(12, 6, 20, 0.95);
+  border: 1px solid rgba(201, 75, 124, 0.4);
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.fantome-import-file-info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+  flex: 1;
+}
+
+.fantome-import-file-name {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.95);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  letter-spacing: -0.2px;
+}
+
+.fantome-import-file-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.fantome-import-file-size {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #c94b7c;
+  padding: 2px 8px;
+  background: rgba(201, 75, 124, 0.12);
+  border-radius: 4px;
+}
+
+.fantome-import-file-type {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.35);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* [MESSAGE] Confirmation message */
+.fantome-import-message {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.6);
+  margin: 0;
+  text-align: center;
+  line-height: 1.5;
+}
+
+/* ============================================================================
+   [FOOTER] Action buttons section
+   ============================================================================ */
+
+.fantome-import-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  padding: 1rem 1.5rem 1.5rem;
+}
+
+/* [BUTTON] Base button styles */
+.fantome-import-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1.25rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  border: 1px solid transparent;
+}
+
+.fantome-import-btn svg {
+  width: 16px;
+  height: 16px;
+}
+
+.fantome-import-btn:active {
+  transform: scale(0.96);
+}
+
+/* [CANCEL] Cancel button */
+.fantome-import-btn-cancel {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.fantome-import-btn-cancel:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.15);
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.fantome-import-btn-cancel svg {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* [CONFIRM] Confirm button */
+.fantome-import-btn-confirm {
+  background: linear-gradient(
+    135deg,
+    rgba(201, 75, 124, 0.2) 0%,
+    rgba(201, 75, 124, 0.12) 100%
+  );
+  border-color: rgba(201, 75, 124, 0.4);
+  color: rgba(255, 220, 240, 0.95);
+}
+
+.fantome-import-btn-confirm:hover {
+  background: linear-gradient(
+    135deg,
+    rgba(201, 75, 124, 0.28) 0%,
+    rgba(201, 75, 124, 0.18) 100%
+  );
+  border-color: rgba(201, 75, 124, 0.55);
+  box-shadow: 0 4px 20px rgba(201, 75, 124, 0.15);
+}
+
+.fantome-import-btn-confirm svg {
+  color: #c94b7c;
+}
+
+/* ============================================================================
+   [RESPONSIVE] Mobile adjustments
+   ============================================================================ */
+
+@media (max-width: 480px) {
+  .fantome-import-modal {
+    width: 95vw;
+    margin: 1rem;
+  }
+
+  .fantome-import-header {
+    padding: 1.25rem 1.25rem 0.875rem;
+  }
+
+  .fantome-import-content {
+    padding: 1.25rem;
+  }
+
+  .fantome-import-footer {
+    padding: 0.875rem 1.25rem 1.25rem;
+    flex-direction: column;
+  }
+
+  .fantome-import-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}

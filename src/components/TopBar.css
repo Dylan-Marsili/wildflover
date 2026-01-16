@@ -1,0 +1,333 @@
+/**
+ * File: TopBar.css
+ * Author: Wildflover
+ * Description: Modern navigation topbar with premium glassmorphism design
+ *              - Floating pill navigation buttons
+ *              - Gradient glow effects on active state
+ *              - Smooth micro-interactions
+ * Language: CSS
+ */
+
+/* [TOPBAR] Main navigation bar - Clean minimal design */
+.topbar {
+  height: 52px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  padding: 0 1.25rem;
+  background: rgba(12, 8, 18, 0.95);
+  border-bottom: 1px solid rgba(201, 75, 124, 0.12);
+  backdrop-filter: blur(10px);
+  position: relative;
+  z-index: 50;
+  contain: layout style;
+}
+
+/* [ACCENT] Bottom gradient line */
+.topbar::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, 
+    transparent 0%,
+    rgba(255, 105, 180, 0.2) 25%,
+    rgba(255, 105, 180, 0.35) 50%, 
+    rgba(255, 105, 180, 0.2) 75%,
+    transparent 100%
+  );
+  pointer-events: none;
+}
+
+/* [LEFT] Brand section */
+.topbar-left {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.topbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* [ICON] Brand logo */
+.brand-icon {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1.5px solid rgba(255, 105, 180, 0.4);
+  box-shadow: 0 0 10px rgba(255, 105, 180, 0.15);
+  transition: all 0.2s ease;
+}
+
+.brand-icon:hover {
+  box-shadow: 0 0 14px rgba(255, 105, 180, 0.25);
+}
+
+/* [TEXT] Brand name - Modern gradient */
+.brand-text {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  display: flex;
+  align-items: baseline;
+}
+
+.brand-wild {
+  color: #ffffff;
+}
+
+.brand-flower {
+  background: linear-gradient(90deg, #ff69b4 0%, #da70d6 40%, #c77dff 70%, #ba55d3 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* [DIVIDER] Vertical separator */
+.brand-divider {
+  width: 1px;
+  height: 14px;
+  background: rgba(255, 105, 180, 0.35);
+  margin: 0 0.375rem;
+}
+
+/* [SUBTITLE] Secondary text - Modern uppercase */
+.brand-subtitle {
+  font-size: 0.5625rem;
+  font-weight: 600;
+  color: rgba(255, 179, 217, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  white-space: nowrap;
+}
+
+/* [NAV] Center navigation - Clean minimal design */
+.topbar-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+}
+
+/* [BUTTON] Navigation button - Compact modern style */
+.nav-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.7rem;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  position: relative;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+
+/* [HOVER] Button hover state */
+.nav-btn:hover {
+  color: rgba(255, 255, 255, 0.9);
+  background: rgba(201, 75, 124, 0.1);
+  border-color: rgba(201, 75, 124, 0.2);
+}
+
+/* [ACTIVE] Selected navigation state */
+.nav-btn.active {
+  color: #ffffff;
+  background: rgba(255, 105, 180, 0.15);
+  border-color: rgba(255, 105, 180, 0.35);
+  box-shadow: 0 0 12px rgba(255, 105, 180, 0.12);
+}
+
+/* [ICON] Button icon container */
+.nav-btn-icon {
+  width: 13px;
+  height: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.nav-btn-icon svg {
+  width: 13px;
+  height: 13px;
+  transition: all 0.15s ease;
+}
+
+.nav-btn.active .nav-btn-icon svg {
+  filter: drop-shadow(0 0 3px rgba(255, 105, 180, 0.5));
+}
+
+/* [LABEL] Button text */
+.nav-btn-label {
+  position: relative;
+  line-height: 1;
+  letter-spacing: 0.01em;
+}
+
+/* [INDICATOR] Active state bottom line */
+.nav-btn-indicator {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 55%;
+  height: 2px;
+  background: linear-gradient(90deg, #ff69b4 0%, #da70d6 50%, #ba55d3 100%);
+  border-radius: 2px 2px 0 0;
+  box-shadow: 0 0 6px rgba(255, 105, 180, 0.5);
+}
+
+/* [RIGHT] User profile section */
+.topbar-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+/* [USER] Discord user profile - Minimal clean design */
+.topbar-user {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 0.25rem;
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  font-family: 'Inter', sans-serif;
+}
+
+.topbar-user:hover {
+  background: rgba(201, 75, 124, 0.08);
+}
+
+/* [INFO] User text info */
+.topbar-user-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+}
+
+.topbar-user-displayname {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #ffffff;
+  line-height: 1.2;
+  max-width: 110px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.topbar-user-username {
+  font-size: 0.625rem;
+  font-weight: 500;
+  color: rgba(255, 150, 200, 0.6);
+  line-height: 1;
+}
+
+/* [AVATAR] User avatar with gradient border */
+.topbar-user-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid transparent;
+  background: 
+    linear-gradient(rgba(15, 10, 20, 1), rgba(15, 10, 20, 1)) padding-box,
+    linear-gradient(135deg, #ff69b4 0%, #c94b7c 50%, #ba55d3 100%) border-box;
+  transition: all 0.15s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.topbar-user:hover .topbar-user-avatar {
+  box-shadow: 
+    0 0 0 2px rgba(255, 105, 180, 0.15),
+    0 2px 12px rgba(255, 105, 180, 0.2);
+}
+
+/* [CONTAINER] User dropdown container */
+.topbar-user-container {
+  position: relative;
+}
+
+/* [DROPDOWN] User dropdown menu - Sharp modern design */
+.topbar-user-dropdown {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  min-width: 130px;
+  background: rgba(10, 8, 15, 0.98);
+  border: 1px solid rgba(201, 75, 124, 0.2);
+  border-radius: 6px;
+  padding: 0.25rem;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  z-index: 100;
+  animation: dropdownReveal 0.1s ease-out;
+  transform-origin: top right;
+}
+
+@keyframes dropdownReveal {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* [ITEM] Dropdown item - Compact sharp style */
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.5rem 0.625rem;
+  background: transparent;
+  border: none;
+  border-radius: 4px;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.75rem;
+  font-weight: 500;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  transition: all 0.1s ease;
+}
+
+.dropdown-item svg {
+  width: 13px;
+  height: 13px;
+  opacity: 0.5;
+  transition: all 0.1s ease;
+}
+
+.dropdown-item:hover {
+  background: rgba(201, 75, 124, 0.12);
+  color: #ffffff;
+}
+
+.dropdown-item:hover svg {
+  opacity: 0.9;
+}
+
+/* [LOGOUT] Logout button - Red accent */
+.dropdown-item.logout:hover {
+  background: rgba(220, 60, 60, 0.15);
+  color: #ff6b6b;
+}
+
+.dropdown-item.logout:hover svg {
+  stroke: #ff6b6b;
+  opacity: 1;
+}

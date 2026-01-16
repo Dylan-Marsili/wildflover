@@ -1,0 +1,570 @@
+/**
+ * File: ChampionCard.css
+ * Author: Wildflover
+ * Description: Champion card with optimized GPU compositing
+ *              - Removed mask-composite for simpler border rendering
+ *              - Reduced transition durations for snappier interactions
+ *              - CSS containment for isolated repaints
+ * Language: CSS
+ */
+
+/* ============================================================================
+   [CARD-BASE] Champion card container
+   - contain: layout style paint - isolates repaints
+   - GPU acceleration only on hover via will-change
+   ============================================================================ */
+
+/* [CARD-BASE] Champion card container with CSS containment */
+.champion-card {
+  position: relative;
+  aspect-ratio: 3/4;
+  border-radius: 0;
+  overflow: hidden;
+  cursor: pointer;
+  background: rgba(12, 6, 18, 0.98);
+  border: 2px solid rgba(255, 105, 180, 0.3);
+  contain: layout style paint;
+  transition: transform 0.2s ease-out, border-color 0.2s ease-out, box-shadow 0.2s ease-out;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+/* [CORNER-MARKS] Sharp corner accent marks */
+.champion-card::before,
+.champion-card::after {
+  content: '';
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  z-index: 10;
+  pointer-events: none;
+  transition: border-color 0.2s ease-out;
+}
+
+.champion-card::before {
+  top: -2px;
+  left: -2px;
+  border-top: 3px solid #ff69b4;
+  border-left: 3px solid #ff69b4;
+}
+
+.champion-card::after {
+  bottom: -2px;
+  right: -2px;
+  border-bottom: 3px solid #ff69b4;
+  border-right: 3px solid #ff69b4;
+}
+
+/* [HOVER] Activate GPU layer only during interaction */
+.champion-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 105, 180, 0.6);
+  box-shadow: 
+    0 8px 24px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(255, 105, 180, 0.15),
+    inset 0 0 20px rgba(255, 105, 180, 0.03);
+}
+
+.champion-card:hover::before,
+.champion-card:hover::after {
+  border-color: #ffb3d9;
+}
+
+/* [SELECTED] Active selection state - Enhanced visibility */
+.champion-card.selected {
+  border-color: rgba(255, 105, 180, 0.8);
+  box-shadow: 
+    0 0 12px rgba(255, 105, 180, 0.4),
+    0 0 24px rgba(255, 105, 180, 0.2),
+    0 4px 16px rgba(0, 0, 0, 0.5);
+}
+
+/* ============================================================================
+   [IMAGE] Card image wrapper and base image
+   ============================================================================ */
+
+.card-image-wrapper {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+/* [IMAGE] Card image with optimized transition */
+.card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  transition: transform 0.3s ease-out;
+}
+
+/* [HOVER] Scale image on card hover */
+.champion-card:hover .card-image {
+  transform: scale(1.06);
+}
+
+/* ============================================================================
+   [SKIN-OVERLAY] Custom skin image overlay with fade animation
+   ============================================================================ */
+
+.card-skin-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.35s ease-out;
+  will-change: opacity;
+}
+
+.card-skin-overlay.loaded {
+  opacity: 1;
+}
+
+.card-skin-overlay.fade-out {
+  animation: skinFadeOut 0.4s ease-out forwards;
+  will-change: opacity;
+}
+
+@keyframes skinFadeOut {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* ============================================================================
+   [GRADIENT] Bottom gradient overlay for text readability
+   ============================================================================ */
+
+.card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg,
+    transparent 0%,
+    rgba(0, 0, 0, 0.05) 40%,
+    rgba(12, 6, 18, 0.9) 85%,
+    rgba(12, 6, 18, 0.98) 100%
+  );
+  pointer-events: none;
+}
+
+/* ============================================================================
+   [CONTENT] Card text content area
+   ============================================================================ */
+
+.card-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 0.875rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  z-index: 2;
+  border-top: 1px solid rgba(255, 105, 180, 0.12);
+  background: rgba(12, 6, 18, 0.6);
+}
+
+.card-name {
+  font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+  transition: color 0.2s ease-out;
+}
+
+.champion-card:hover .card-name {
+  color: rgba(255, 220, 240, 0.95);
+}
+
+.card-title {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.5625rem;
+  font-weight: 700;
+  color: #ff69b4;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin: 0;
+}
+
+/* ============================================================================
+   [INDICATOR] Custom skin selection border indicator - Anime style static
+   ============================================================================ */
+
+.card-skin-indicator {
+  position: absolute;
+  inset: 0;
+  border-radius: 0;
+  z-index: 1;
+  pointer-events: none;
+  padding: 2px;
+  background: linear-gradient(135deg, rgba(201, 75, 124, 1) 0%, rgba(168, 61, 104, 0.95) 50%, rgba(139, 58, 98, 1) 100%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  box-shadow: 
+    0 0 8px rgba(201, 75, 124, 0.5),
+    0 0 16px rgba(201, 75, 124, 0.3),
+    inset 0 0 4px rgba(201, 75, 124, 0.2);
+}
+
+/* [CORNER-CUTS] Sharp anime style cut corners */
+.card-skin-indicator::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  width: 12px;
+  height: 12px;
+  background: linear-gradient(135deg, transparent 50%, rgba(201, 75, 124, 1) 50%);
+  clip-path: polygon(0 0, 100% 0, 0 100%);
+  filter: drop-shadow(0 0 4px rgba(201, 75, 124, 0.6));
+}
+
+.card-skin-indicator::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  right: -1px;
+  width: 12px;
+  height: 12px;
+  background: linear-gradient(315deg, transparent 50%, rgba(139, 58, 98, 1) 50%);
+  clip-path: polygon(100% 0, 100% 100%, 0 100%);
+  filter: drop-shadow(0 0 4px rgba(139, 58, 98, 0.6));
+}
+
+.card-skin-indicator.fade-out {
+  opacity: 0;
+  transition: opacity 0.4s ease-out;
+}
+
+/* ============================================================================
+   [FAVORITE] Favorite toggle button
+   ============================================================================ */
+
+/* [FAVORITE] Favorite toggle button with optimized transitions */
+.card-favorite {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.85);
+  border: 1px solid rgba(255, 105, 180, 0.25);
+  border-radius: 2px;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: opacity 0.15s ease-out, transform 0.15s ease-out, background 0.15s ease-out, border-color 0.15s ease-out;
+  z-index: 3;
+}
+
+.champion-card:hover .card-favorite {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.card-favorite:hover {
+  background: rgba(255, 105, 180, 0.2);
+  border-color: rgba(255, 105, 180, 0.5);
+}
+
+.card-favorite svg {
+  width: 14px;
+  height: 14px;
+  color: rgba(255, 255, 255, 0.7);
+  transition: color 0.15s ease-out;
+}
+
+.card-favorite:hover svg {
+  color: #ff69b4;
+}
+
+/* [ACTIVE] Favorited state - Subtle and elegant */
+.card-favorite.active {
+  opacity: 1;
+  background: rgba(0, 0, 0, 0.55);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.card-favorite.active svg {
+  color: rgba(255, 180, 210, 0.9);
+  fill: rgba(255, 180, 210, 0.9);
+}
+
+/* [ACTIVE-HOVER] Hover state for active favorite button */
+.card-favorite.active:hover {
+  background: rgba(255, 80, 100, 0.25);
+  border-color: rgba(255, 80, 100, 0.5);
+  transform: translateY(0) scale(1.05);
+}
+
+.card-favorite.active:hover svg {
+  color: #ff6b7a;
+  fill: #ff6b7a;
+}
+
+/* ============================================================================
+   [GLOW] Hover glow effect border
+   ============================================================================ */
+
+.card-glow {
+  position: absolute;
+  inset: -1px;
+  border-radius: 0;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 0;
+  transition: opacity 0.25s ease-out;
+}
+
+.champion-card:hover .card-glow {
+  opacity: 1;
+}
+
+/* ============================================================================
+   [BADGE] Skin count badge - Compact with label
+   ============================================================================ */
+
+.card-skin-count {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  z-index: 3;
+}
+
+.skin-count-inner {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 4px 8px;
+  background: rgba(0, 0, 0, 0.85);
+  border-left: 3px solid #ff69b4;
+  border-radius: 0 2px 2px 0;
+}
+
+.skin-count-value {
+  font-size: 10px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+.skin-count-label {
+  font-size: 8px;
+  font-weight: 600;
+  color: rgba(255, 105, 180, 0.9);
+  text-transform: uppercase;
+  line-height: 1;
+  letter-spacing: 0.02em;
+}
+
+
+/* ============================================================================
+   [CHROMA-BADGE] Enhanced chroma selection indicator with color preview
+   ============================================================================ */
+
+.card-chroma-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: 0.4rem;
+  padding: 0.25rem 0.5rem;
+  background: linear-gradient(135deg, rgba(12, 10, 18, 0.95) 0%, rgba(20, 15, 30, 0.9) 100%);
+  border: 1px solid rgba(201, 75, 124, 0.4);
+  border-radius: 0;
+  max-width: fit-content;
+  backdrop-filter: blur(8px);
+  animation: chromaBadgeFadeIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 
+    0 2px 8px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+@keyframes chromaBadgeFadeIn {
+  0% { opacity: 0; transform: translateY(6px) scale(0.95); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* [CHROMA-COLORS] Color dots container */
+.chroma-badge-colors {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.chroma-color-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 255, 255, 0.35);
+  flex-shrink: 0;
+}
+
+.chroma-color-dot:first-child {
+  margin-left: 0;
+  z-index: 3;
+}
+
+.chroma-color-dot:nth-child(2) {
+  z-index: 2;
+}
+
+.chroma-color-dot:nth-child(3) {
+  z-index: 1;
+}
+
+.chroma-badge-name {
+  font-size: 0.625rem;
+  font-weight: 600;
+  color: rgba(255, 179, 217, 0.95);
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 90px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  line-height: 1.4;
+}
+
+/* [HAS-CHROMA] Card state when chroma is selected */
+.champion-card.has-chroma .card-skin-indicator {
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.9) 0%, rgba(201, 75, 124, 0.85) 50%, rgba(129, 140, 248, 0.9) 100%);
+}
+
+.champion-card.has-chroma .card-skin-indicator::before {
+  background: linear-gradient(135deg, transparent 50%, rgba(168, 85, 247, 0.9) 50%);
+}
+
+.champion-card.has-chroma .card-skin-indicator::after {
+  background: linear-gradient(315deg, transparent 50%, rgba(129, 140, 248, 0.9) 50%);
+}
+
+.champion-card.has-chroma:hover .card-chroma-badge {
+  border-color: rgba(201, 75, 124, 0.6);
+  background: linear-gradient(135deg, rgba(15, 10, 20, 0.98) 0%, rgba(25, 18, 35, 0.95) 100%);
+}
+
+.champion-card.has-chroma:hover .chroma-color-dot {
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+/* [CHROMA-FADEOUT] Synchronized fade-out animation for chroma badge */
+.card-chroma-badge.fade-out {
+  animation: chromaBadgeFadeOut 0.4s ease-out forwards;
+}
+
+@keyframes chromaBadgeFadeOut {
+  0% { 
+    opacity: 1; 
+    transform: translateY(0) scale(1); 
+  }
+  100% { 
+    opacity: 0; 
+    transform: translateY(4px) scale(0.95); 
+  }
+}
+
+
+/* ============================================================================
+   [LOCKED] Card locked/disabled state when mods are active
+   - Permanent dimmed appearance with grayscale effect
+   - Lock icon visible on hover
+   - All interactions disabled
+   ============================================================================ */
+
+.champion-card.locked {
+  cursor: not-allowed;
+  pointer-events: auto;
+  filter: grayscale(0.6) brightness(0.65);
+  opacity: 0.7;
+  transition: filter 0.3s ease, opacity 0.3s ease, transform 0.2s ease-out;
+}
+
+/* [LOCKED-OVERLAY] Permanent dark overlay */
+.champion-card.locked::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 10;
+  border-radius: 0;
+  opacity: 1;
+  transition: opacity 0.2s ease;
+}
+
+/* [LOCKED-HOVER] Slightly brighter on hover to show interactivity feedback */
+.champion-card.locked:hover {
+  filter: grayscale(0.5) brightness(0.75);
+  opacity: 0.8;
+  transform: none;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.champion-card.locked:hover::before {
+  opacity: 0.6;
+}
+
+.champion-card.locked .card-glow {
+  opacity: 0 !important;
+}
+
+/* [LOCKED-IMAGE] Disable image scale on hover */
+.champion-card.locked:hover .card-image {
+  transform: none;
+}
+
+/* [LOCK-OVERLAY] Lock icon overlay - visible on hover */
+.card-lock-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  z-index: 15;
+  border-radius: 0;
+}
+
+.champion-card.locked:hover .card-lock-overlay {
+  opacity: 1;
+}
+
+.card-lock-overlay .lock-icon {
+  width: 40px;
+  height: 40px;
+  color: rgba(255, 255, 255, 0.85);
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.5));
+  animation: lockPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes lockPulse {
+  0%, 100% { transform: scale(1); opacity: 0.85; }
+  50% { transform: scale(1.05); opacity: 1; }
+}
+
+/* [LOCKED-ELEMENTS] Disable interactive elements when locked */
+.champion-card.locked .card-favorite {
+  pointer-events: none;
+  opacity: 0.3;
+}
+
+.champion-card.locked .card-content {
+  opacity: 0.7;
+}
+
+.champion-card.locked .card-skin-indicator {
+  opacity: 0.4;
+}
+
+.champion-card.locked .card-chroma-badge {
+  opacity: 0.5;
+}

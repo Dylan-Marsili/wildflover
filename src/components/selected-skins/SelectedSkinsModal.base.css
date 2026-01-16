@@ -1,0 +1,377 @@
+/**
+ * File: SelectedSkinsModal.base.css
+ * Author: Wildflover
+ * Description: Base styles - overlay, modal, header, search components
+ * Language: CSS
+ */
+
+/* [OVERLAY] Modal backdrop */
+.selected-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.88);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  animation: overlayFadeIn 0.2s ease-out;
+  padding: 20px;
+}
+
+@keyframes overlayFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* [MODAL] Main container - sharp professional design */
+.selected-modal {
+  width: 100%;
+  max-width: 540px;
+  max-height: 85vh;
+  background: rgba(12, 8, 20, 0.98);
+  border: 1px solid rgba(201, 75, 124, 0.35);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: modalSlideIn 0.2s ease-out;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+@keyframes modalSlideIn {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* [HEADER] Modal header - Enhanced with pink gradient */
+.selected-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  background: rgba(0, 0, 0, 0.25);
+  border-top: 1px solid rgba(255, 105, 180, 0.25);
+  border-bottom: 1px solid rgba(201, 75, 124, 0.25);
+}
+
+.selected-modal-title-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.selected-modal-title-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* [TITLE] Pink gradient text */
+.selected-modal-title {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 700;
+  background: linear-gradient(135deg, #ff69b4 0%, #da70d6 50%, #ba55d3 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* [TITLE-ICON] Header icon with gradient */
+.selected-title-icon {
+  width: 18px;
+  height: 18px;
+  stroke: #ff69b4;
+  flex-shrink: 0;
+}
+
+/* [SUBTITLE] */
+.selected-modal-subtitle {
+  font-size: 10px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.4);
+  letter-spacing: 0.02em;
+}
+
+/* [COUNT-BADGE] Pink styled badge */
+.selected-modal-count {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 12px;
+  background: rgba(255, 105, 180, 0.12);
+  border: 1px solid rgba(255, 105, 180, 0.35);
+  border-radius: 5px;
+  font-size: 10px;
+  font-weight: 600;
+  color: #ff69b4;
+}
+
+/* [CLOSE-BTN] */
+.selected-header-actions {
+  display: flex;
+  gap: 6px;
+}
+
+.selected-modal-help,
+.selected-modal-close {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(201, 75, 124, 0.15);
+  border: 1px solid rgba(201, 75, 124, 0.3);
+  border-radius: 6px;
+  color: rgba(255, 179, 217, 0.9);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  position: relative;
+}
+
+.selected-modal-help:hover {
+  background: rgba(201, 75, 124, 0.3);
+  color: #fff;
+}
+
+/* [TOOLTIP] Show tooltip on hover */
+.selected-modal-help .selected-help-tooltip {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+}
+
+.selected-modal-help:hover .selected-help-tooltip {
+  opacity: 1;
+  visibility: visible;
+}
+
+.selected-modal-close:hover {
+  background: rgba(239, 68, 68, 0.25);
+  border-color: rgba(239, 68, 68, 0.4);
+  color: #f87171;
+}
+
+.selected-modal-help svg,
+.selected-modal-close svg {
+  width: 15px;
+  height: 15px;
+}
+
+/* [HELP-TOOLTIP] */
+.selected-help-tooltip {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: -10px;
+  width: 260px;
+  padding: 12px;
+  background: rgba(12, 8, 20, 0.98);
+  border: 1px solid rgba(201, 75, 124, 0.4);
+  border-radius: 8px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6);
+  z-index: 10;
+  cursor: default;
+}
+
+.selected-help-tooltip::before {
+  content: '';
+  position: absolute;
+  top: -6px;
+  right: 16px;
+  width: 10px;
+  height: 10px;
+  background: rgba(12, 8, 20, 0.98);
+  border-left: 1px solid rgba(201, 75, 124, 0.4);
+  border-top: 1px solid rgba(201, 75, 124, 0.4);
+  transform: rotate(45deg);
+}
+
+.selected-help-title {
+  font-size: 11px;
+  font-weight: 700;
+  color: rgba(255, 179, 217, 1);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 6px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid rgba(201, 75, 124, 0.2);
+  text-align: center;
+}
+
+.selected-help-content {
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.45);
+  line-height: 1.3;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.selected-help-section {
+  margin-bottom: 8px;
+}
+
+.selected-help-section:last-child {
+  margin-bottom: 0;
+}
+
+.selected-help-section-title {
+  font-size: 9px;
+  font-weight: 700;
+  color: rgba(255, 179, 217, 0.6);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 5px;
+  padding-left: 4px;
+}
+
+/* Table-based layout for perfect alignment */
+.selected-help-item {
+  display: table;
+  width: 100%;
+  margin-bottom: 4px;
+  padding: 4px 6px;
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 3px;
+  box-sizing: border-box;
+}
+
+.selected-help-item:last-child { 
+  margin-bottom: 0; 
+}
+
+.selected-help-item .help-badge {
+  display: table-cell;
+  width: 16px;
+  vertical-align: middle;
+}
+
+.selected-help-item .help-badge::before {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 2px;
+}
+
+.selected-help-item .help-badge.help-form::before {
+  background: #10b981;
+}
+
+.selected-help-item .help-badge.help-chroma::before {
+  background: #ba55d3;
+}
+
+.selected-help-item .help-badge.help-skin::before {
+  background: #f87171;
+}
+
+.selected-help-item .help-badge.help-custom::before {
+  background: #c94b7c;
+}
+
+.selected-help-item .help-label { 
+  display: table-cell;
+  width: 70px;
+  font-size: 10px; 
+  font-weight: 600; 
+  color: rgba(255, 255, 255, 0.8); 
+  vertical-align: middle;
+}
+
+.selected-help-item .help-desc { 
+  display: table-cell;
+  font-size: 9px; 
+  color: rgba(255, 255, 255, 0.4);
+  line-height: 1.2;
+  vertical-align: middle;
+}
+
+/* No badge items */
+.selected-help-item.no-badge .help-label {
+  padding-left: 16px;
+}
+
+/* Reset item */
+.selected-help-item.reset-item {
+  margin-top: 6px;
+  padding-top: 6px;
+  border-top: 1px solid rgba(201, 75, 124, 0.2);
+  background: transparent;
+}
+
+.selected-help-item.reset-item .help-label {
+  color: #f87171;
+  padding-left: 0;
+}
+
+/* [SEARCH] Search wrapper */
+.selected-search-wrapper {
+  padding: 10px 14px;
+  background: rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid rgba(201, 75, 124, 0.15);
+}
+
+.selected-search-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.selected-search-icon {
+  position: absolute;
+  left: 12px;
+  width: 14px;
+  height: 14px;
+  color: rgba(255, 179, 217, 0.4);
+  pointer-events: none;
+}
+
+.selected-search-input {
+  width: 100%;
+  padding: 10px 36px 10px 36px;
+  background: rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(201, 75, 124, 0.2);
+  border-radius: 6px;
+  color: rgba(255, 255, 255, 0.95);
+  font-size: 12px;
+  font-family: inherit;
+  outline: none;
+  transition: all 0.15s ease;
+}
+
+.selected-search-input::placeholder {
+  color: rgba(255, 255, 255, 0.25);
+}
+
+.selected-search-input:focus {
+  border-color: rgba(201, 75, 124, 0.5);
+  box-shadow: 0 0 0 2px rgba(201, 75, 124, 0.1);
+}
+
+.selected-search-clear {
+  position: absolute;
+  right: 8px;
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.05);
+  border: none;
+  border-radius: 4px;
+  color: rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.selected-search-clear:hover {
+  background: rgba(201, 75, 124, 0.2);
+  color: rgba(255, 179, 217, 0.9);
+}
+
+.selected-search-clear svg {
+  width: 11px;
+  height: 11px;
+}

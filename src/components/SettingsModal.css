@@ -1,0 +1,14 @@
+/**
+ * File: SettingsModal.css
+ * Author: Wildflover
+ * Description: Main settings modal stylesheet - imports modular CSS files
+ *              - Sharp professional design matching SelectedSkinsModal
+ *              - Modular architecture for maintainability
+ * Language: CSS
+ */
+
+/* [IMPORTS] Modular CSS components */
+@import './settings/SettingsModal.base.css';
+@import './settings/SettingsModal.tabs.css';
+@import './settings/SettingsModal.cleanup.css';
+@import './settings/SettingsModal.about.css';

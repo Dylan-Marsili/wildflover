@@ -1,0 +1,233 @@
+/**
+ * File: AccessDeniedScreen.css
+ * Author: Wildflover
+ * Description: Access denied screen - Modern anime style dark theme
+ * Language: CSS
+ */
+
+/* [ROOT] Access denied screen container */
+.access-denied-screen {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: 
+    linear-gradient(145deg, rgba(8, 6, 16, 0.72) 0%, rgba(13, 10, 24, 0.77) 50%, rgba(10, 8, 18, 0.72) 100%),
+    url('/assets/backgrounds/login_bg.jpg') center/cover no-repeat;
+  overflow: hidden;
+  z-index: 9999;
+}
+
+/* [CONTENT] Main content */
+.access-denied-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+  padding: 48px;
+  max-width: 420px;
+  width: 100%;
+  z-index: 1;
+}
+
+/* [LOGO] Logo section */
+.denied-logo-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.denied-logo-container {
+  position: relative;
+  width: 88px;
+  height: 88px;
+}
+
+.denied-logo-ring {
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #4fa4cb 0%, #7fc4ed 50%, #3d8ab0 100%);
+  animation: deniedRingRotate 15s linear infinite;
+}
+
+.denied-logo-ring::before {
+  content: '';
+  position: absolute;
+  inset: 2px;
+  background: rgba(10, 12, 18, 0.95);
+  border-radius: 50%;
+}
+
+.denied-logo-ring::after {
+  content: '';
+  position: absolute;
+  top: -3px;
+  left: 50%;
+  width: 6px;
+  height: 6px;
+  background: #7fc4ed;
+  border-radius: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 0 12px #4fa4cb;
+}
+
+@keyframes deniedRingRotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.denied-logo-core {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.denied-logo-core img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.denied-logo-core svg {
+  width: 48px;
+  height: 48px;
+  color: #f04747;
+}
+
+/* [TITLE] Title group */
+.denied-title-group {
+  text-align: center;
+}
+
+.denied-title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.denied-title .title-wild {
+  color: #ffffff;
+}
+
+.denied-title .title-flower {
+  background: linear-gradient(135deg, #4fa4cb 0%, #7fc4ed 50%, #3d8ab0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.denied-subtitle {
+  margin: 6px 0 0;
+  font-size: 0.8rem;
+  color: rgba(240, 71, 71, 0.8);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+}
+
+/* [MESSAGE] Message section */
+.denied-message-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  text-align: center;
+}
+
+.denied-description {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.6;
+  margin: 0;
+  max-width: 320px;
+}
+
+.denied-hint {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.45);
+  margin: 4px 0 0;
+}
+
+/* [ACTIONS] Action buttons */
+.denied-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  max-width: 260px;
+  margin-top: 8px;
+}
+
+.denied-retry-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px 24px;
+  background: linear-gradient(135deg, #5865f2 0%, #4752c4 100%);
+  border: none;
+  border-radius: 10px;
+  color: #ffffff;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 16px rgba(88, 101, 242, 0.3);
+}
+
+.denied-retry-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(88, 101, 242, 0.45);
+}
+
+.denied-retry-btn:active {
+  transform: translateY(0);
+}
+
+.denied-retry-btn svg {
+  width: 18px;
+  height: 18px;
+}
+
+.denied-close-btn {
+  padding: 12px 24px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.denied-close-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+}
+
+/* [FOOTER] Footer - positioned at bottom */
+.denied-footer {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.denied-footer-text {
+  color: rgba(255, 255, 255, 0.2);
+  font-size: 0.7rem;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+}

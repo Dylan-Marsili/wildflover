@@ -1,0 +1,33 @@
+# File: Cargo.toml
+# Author: Wildflover
+# Description: Rust dependencies for Wildflover - Minimal frontend-focused setup
+# Language: TOML
+
+[package]
+name = "wildflover"
+version = "1.0.0"
+description = "Professional League of Legends Skin Manager"
+authors = ["Wildflover"]
+edition = "2021"
+
+[build-dependencies]
+tauri-build = { version = "2.0", features = [] }
+
+[dependencies]
+tauri = { version = "2.0", features = ["tray-icon"] }
+tauri-plugin-shell = "2.0"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+reqwest = { version = "0.12", features = ["json"] }
+tokio = { version = "1", features = ["full"] }
+discord-presence = "1.4"
+zip = "2.2"
+chrono = "0.4"
+rfd = "0.15"
+base64 = "0.22"
+dirs = "5.0"
+lazy_static = "1.5"
+
+[features]
+default = ["custom-protocol"]
+custom-protocol = ["tauri/custom-protocol"]

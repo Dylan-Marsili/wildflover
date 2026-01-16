@@ -1,0 +1,15 @@
+/**
+ * File: SelectedSkinsModal.css
+ * Author: Wildflover
+ * Description: Import hub for modular selected skins modal styles
+ * Language: CSS
+ * 
+ * Architecture:
+ * - base.css    : Overlay, modal, header, search components
+ * - items.css   : Content, empty state, item cards, badges
+ * - actions.css : Action buttons, tooltips, footer with color variants
+ */
+
+@import './selected-skins/SelectedSkinsModal.base.css';
+@import './selected-skins/SelectedSkinsModal.items.css';
+@import './selected-skins/SelectedSkinsModal.actions.css';

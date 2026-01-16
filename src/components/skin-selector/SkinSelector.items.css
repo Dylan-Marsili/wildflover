@@ -1,0 +1,379 @@
+/**
+ * File: SkinSelector.items.css
+ * Author: Wildflover
+ * Description: Skin item card styles - base, rarity variants, selection states
+ * Language: CSS
+ */
+
+/* [ITEM] Skin item card - Sharp professional design */
+.skin-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(201, 75, 124, 0.2);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.skin-item:hover {
+  background: rgba(201, 75, 124, 0.08);
+  border-color: rgba(201, 75, 124, 0.4);
+}
+
+.skin-item.previewing {
+  background: rgba(201, 75, 124, 0.05);
+  border-color: rgba(201, 75, 124, 0.3);
+}
+
+/* [RARITY-BODY] Rarity-based body frame borders with gradient effects */
+.skin-item.rarity-epic {
+  border: 1.5px solid transparent;
+  background: 
+    linear-gradient(rgba(12, 8, 20, 0.98), rgba(12, 8, 20, 0.98)) padding-box,
+    linear-gradient(135deg, rgba(30, 144, 255, 0.7) 0%, rgba(100, 180, 255, 0.5) 50%, rgba(30, 144, 255, 0.7) 100%) border-box;
+  box-shadow: inset 0 0 15px rgba(30, 144, 255, 0.12), 0 0 8px rgba(30, 144, 255, 0.15);
+}
+
+.skin-item.rarity-epic:hover {
+  background: 
+    linear-gradient(rgba(15, 12, 25, 0.98), rgba(15, 12, 25, 0.98)) padding-box,
+    linear-gradient(135deg, rgba(30, 144, 255, 0.9) 0%, rgba(100, 180, 255, 0.7) 50%, rgba(30, 144, 255, 0.9) 100%) border-box;
+  box-shadow: 0 0 20px rgba(30, 144, 255, 0.35), inset 0 0 20px rgba(30, 144, 255, 0.15);
+}
+
+.skin-item.rarity-legendary {
+  border: 1.5px solid transparent;
+  background: 
+    linear-gradient(rgba(12, 8, 20, 0.98), rgba(12, 8, 20, 0.98)) padding-box,
+    linear-gradient(135deg, rgba(255, 100, 50, 0.7) 0%, rgba(255, 150, 80, 0.5) 50%, rgba(255, 80, 30, 0.7) 100%) border-box;
+  box-shadow: inset 0 0 15px rgba(255, 100, 50, 0.12), 0 0 8px rgba(255, 100, 50, 0.15);
+}
+
+.skin-item.rarity-legendary:hover {
+  background: 
+    linear-gradient(rgba(15, 12, 25, 0.98), rgba(15, 12, 25, 0.98)) padding-box,
+    linear-gradient(135deg, rgba(255, 100, 50, 0.9) 0%, rgba(255, 150, 80, 0.7) 50%, rgba(255, 80, 30, 0.9) 100%) border-box;
+  box-shadow: 0 0 20px rgba(255, 100, 50, 0.4), inset 0 0 20px rgba(255, 100, 50, 0.15);
+}
+
+.skin-item.rarity-mythic {
+  border: 1.5px solid transparent;
+  background: 
+    linear-gradient(rgba(12, 8, 20, 0.98), rgba(12, 8, 20, 0.98)) padding-box,
+    linear-gradient(135deg, rgba(186, 85, 211, 0.7) 0%, rgba(220, 130, 255, 0.5) 50%, rgba(148, 60, 180, 0.7) 100%) border-box;
+  box-shadow: inset 0 0 15px rgba(186, 85, 211, 0.12), 0 0 8px rgba(186, 85, 211, 0.15);
+}
+
+.skin-item.rarity-mythic:hover {
+  background: 
+    linear-gradient(rgba(15, 12, 25, 0.98), rgba(15, 12, 25, 0.98)) padding-box,
+    linear-gradient(135deg, rgba(186, 85, 211, 0.9) 0%, rgba(220, 130, 255, 0.7) 50%, rgba(148, 60, 180, 0.9) 100%) border-box;
+  box-shadow: 0 0 20px rgba(186, 85, 211, 0.4), inset 0 0 20px rgba(186, 85, 211, 0.15);
+}
+
+.skin-item.rarity-ultimate {
+  border: 1.5px solid transparent;
+  background: 
+    linear-gradient(rgba(12, 8, 20, 0.98), rgba(12, 8, 20, 0.98)) padding-box,
+    linear-gradient(135deg, rgba(255, 200, 50, 0.7) 0%, rgba(255, 230, 100, 0.5) 50%, rgba(255, 170, 30, 0.7) 100%) border-box;
+  box-shadow: inset 0 0 15px rgba(255, 200, 50, 0.12), 0 0 8px rgba(255, 200, 50, 0.2);
+}
+
+.skin-item.rarity-ultimate:hover {
+  background: 
+    linear-gradient(rgba(15, 12, 25, 0.98), rgba(15, 12, 25, 0.98)) padding-box,
+    linear-gradient(135deg, rgba(255, 200, 50, 0.95) 0%, rgba(255, 230, 100, 0.75) 50%, rgba(255, 170, 30, 0.95) 100%) border-box;
+  box-shadow: 0 0 24px rgba(255, 200, 50, 0.5), inset 0 0 20px rgba(255, 200, 50, 0.18);
+}
+
+.skin-item.rarity-transcendent {
+  border: 1.5px solid transparent;
+  background: 
+    linear-gradient(rgba(12, 8, 20, 0.98), rgba(12, 8, 20, 0.98)) padding-box,
+    linear-gradient(135deg, rgba(0, 255, 200, 0.7) 0%, rgba(100, 255, 230, 0.5) 50%, rgba(0, 200, 180, 0.7) 100%) border-box;
+  box-shadow: inset 0 0 15px rgba(0, 255, 200, 0.12), 0 0 8px rgba(0, 255, 200, 0.2);
+}
+
+.skin-item.rarity-transcendent:hover {
+  background: 
+    linear-gradient(rgba(15, 12, 25, 0.98), rgba(15, 12, 25, 0.98)) padding-box,
+    linear-gradient(135deg, rgba(0, 255, 200, 0.95) 0%, rgba(100, 255, 230, 0.75) 50%, rgba(0, 200, 180, 0.95) 100%) border-box;
+  box-shadow: 0 0 24px rgba(0, 255, 200, 0.5), inset 0 0 20px rgba(0, 255, 200, 0.18);
+}
+
+.skin-item.rarity-exalted {
+  border: 1.5px solid transparent;
+  background: 
+    linear-gradient(rgba(12, 8, 20, 0.98), rgba(12, 8, 20, 0.98)) padding-box,
+    linear-gradient(135deg, rgba(180, 220, 100, 0.7) 0%, rgba(220, 255, 150, 0.5) 50%, rgba(150, 200, 80, 0.7) 100%) border-box;
+  box-shadow: inset 0 0 15px rgba(180, 220, 100, 0.12), 0 0 8px rgba(180, 220, 100, 0.2);
+}
+
+.skin-item.rarity-exalted:hover {
+  background: 
+    linear-gradient(rgba(15, 12, 25, 0.98), rgba(15, 12, 25, 0.98)) padding-box,
+    linear-gradient(135deg, rgba(180, 220, 100, 0.95) 0%, rgba(220, 255, 150, 0.75) 50%, rgba(150, 200, 80, 0.95) 100%) border-box;
+  box-shadow: 0 0 24px rgba(180, 220, 100, 0.5), inset 0 0 20px rgba(180, 220, 100, 0.18);
+}
+
+/* [RARITY-GEM-POSITION] Rarity gem icon on card */
+.skin-item-rarity-gem {
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+
+.skin-item-rarity-gem .rarity-gem-icon {
+  width: 14px;
+  height: 14px;
+  filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.7));
+}
+
+/* [SELECTED] Selected state */
+.skin-item.selected {
+  padding-left: 12px;
+}
+
+.skin-item.selected::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 6px;
+  bottom: 6px;
+  width: 3px;
+  background: linear-gradient(180deg, rgba(255, 179, 217, 1) 0%, rgba(201, 75, 124, 0.8) 100%);
+  border-radius: 0 2px 2px 0;
+  box-shadow: 0 0 8px rgba(201, 75, 124, 0.4);
+}
+
+/* [SELECTED-RARITY] Enhanced gradient glow when selected with rarity */
+.skin-item.selected.rarity-epic {
+  background: 
+    linear-gradient(rgba(20, 25, 40, 0.98), rgba(20, 25, 40, 0.98)) padding-box,
+    linear-gradient(135deg, rgba(30, 144, 255, 1) 0%, rgba(100, 180, 255, 0.8) 50%, rgba(30, 144, 255, 1) 100%) border-box;
+  box-shadow: 0 0 24px rgba(30, 144, 255, 0.5), inset 0 0 25px rgba(30, 144, 255, 0.12);
+}
+
+.skin-item.selected.rarity-legendary {
+  background: 
+    linear-gradient(rgba(30, 20, 18, 0.98), rgba(30, 20, 18, 0.98)) padding-box,
+    linear-gradient(135deg, rgba(255, 100, 50, 1) 0%, rgba(255, 150, 80, 0.8) 50%, rgba(255, 80, 30, 1) 100%) border-box;
+  box-shadow: 0 0 24px rgba(255, 100, 50, 0.55), inset 0 0 25px rgba(255, 100, 50, 0.12);
+}
+
+.skin-item.selected.rarity-mythic {
+  background: 
+    linear-gradient(rgba(28, 18, 35, 0.98), rgba(28, 18, 35, 0.98)) padding-box,
+    linear-gradient(135deg, rgba(186, 85, 211, 1) 0%, rgba(220, 130, 255, 0.8) 50%, rgba(148, 60, 180, 1) 100%) border-box;
+  box-shadow: 0 0 24px rgba(186, 85, 211, 0.55), inset 0 0 25px rgba(186, 85, 211, 0.12);
+}
+
+.skin-item.selected.rarity-ultimate {
+  background: 
+    linear-gradient(rgba(30, 28, 18, 0.98), rgba(30, 28, 18, 0.98)) padding-box,
+    linear-gradient(135deg, rgba(255, 200, 50, 1) 0%, rgba(255, 230, 100, 0.85) 50%, rgba(255, 170, 30, 1) 100%) border-box;
+  box-shadow: 0 0 28px rgba(255, 200, 50, 0.6), inset 0 0 28px rgba(255, 200, 50, 0.15);
+}
+
+.skin-item.selected.rarity-transcendent {
+  background: 
+    linear-gradient(rgba(18, 30, 28, 0.98), rgba(18, 30, 28, 0.98)) padding-box,
+    linear-gradient(135deg, rgba(0, 255, 200, 1) 0%, rgba(100, 255, 230, 0.85) 50%, rgba(0, 200, 180, 1) 100%) border-box;
+  box-shadow: 0 0 28px rgba(0, 255, 200, 0.6), inset 0 0 28px rgba(0, 255, 200, 0.15);
+}
+
+.skin-item.selected.rarity-exalted {
+  background: 
+    linear-gradient(rgba(25, 30, 18, 0.98), rgba(25, 30, 18, 0.98)) padding-box,
+    linear-gradient(135deg, rgba(180, 220, 100, 1) 0%, rgba(220, 255, 150, 0.85) 50%, rgba(150, 200, 80, 1) 100%) border-box;
+  box-shadow: 0 0 28px rgba(180, 220, 100, 0.6), inset 0 0 28px rgba(180, 220, 100, 0.15);
+}
+
+/* [SELECTED-INDICATOR-RARITY] Rarity colored selection indicator */
+.skin-item.selected.rarity-epic::before {
+  background: linear-gradient(180deg, rgba(30, 144, 255, 1) 0%, rgba(65, 105, 225, 0.8) 100%);
+  box-shadow: 0 0 10px rgba(30, 144, 255, 0.6);
+}
+
+.skin-item.selected.rarity-legendary::before {
+  background: linear-gradient(180deg, rgba(255, 120, 50, 1) 0%, rgba(255, 80, 30, 0.8) 100%);
+  box-shadow: 0 0 10px rgba(255, 100, 50, 0.6);
+}
+
+.skin-item.selected.rarity-mythic::before {
+  background: linear-gradient(180deg, rgba(200, 100, 230, 1) 0%, rgba(150, 60, 190, 0.8) 100%);
+  box-shadow: 0 0 10px rgba(186, 85, 211, 0.6);
+}
+
+.skin-item.selected.rarity-ultimate::before {
+  background: linear-gradient(180deg, rgba(255, 215, 80, 1) 0%, rgba(255, 180, 30, 0.8) 100%);
+  box-shadow: 0 0 12px rgba(255, 200, 50, 0.7);
+}
+
+.skin-item.selected.rarity-transcendent::before {
+  background: linear-gradient(180deg, rgba(50, 255, 220, 1) 0%, rgba(0, 200, 180, 0.8) 100%);
+  box-shadow: 0 0 12px rgba(0, 255, 200, 0.7);
+}
+
+.skin-item.selected.rarity-exalted::before {
+  background: linear-gradient(180deg, rgba(200, 230, 120, 1) 0%, rgba(150, 200, 80, 0.8) 100%);
+  box-shadow: 0 0 12px rgba(180, 220, 100, 0.7);
+}
+
+/* [ITEM-IMAGE] Thumbnail wrapper */
+.skin-item-image-wrapper {
+  position: relative;
+  width: 48px;
+  height: 64px;
+  border-radius: 6px;
+  overflow: hidden;
+  flex-shrink: 0;
+  border: 1px solid rgba(201, 75, 124, 0.3);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+/* [IMAGE-RARITY] Image wrapper rarity colors */
+.skin-item.rarity-epic .skin-item-image-wrapper {
+  border-color: rgba(30, 144, 255, 0.45);
+}
+
+.skin-item.rarity-legendary .skin-item-image-wrapper {
+  border-color: rgba(255, 100, 50, 0.5);
+}
+
+.skin-item.rarity-mythic .skin-item-image-wrapper {
+  border-color: rgba(186, 85, 211, 0.5);
+}
+
+.skin-item.rarity-ultimate .skin-item-image-wrapper {
+  border-color: rgba(255, 200, 50, 0.5);
+}
+
+.skin-item.rarity-transcendent .skin-item-image-wrapper {
+  border-color: rgba(0, 255, 200, 0.5);
+}
+
+.skin-item.rarity-exalted .skin-item-image-wrapper {
+  border-color: rgba(180, 220, 100, 0.5);
+}
+
+.skin-item.selected .skin-item-image-wrapper {
+  border-color: rgba(255, 179, 217, 0.5);
+  box-shadow: 0 0 10px rgba(201, 75, 124, 0.3);
+}
+
+/* [SELECTED-IMAGE-RARITY] Enhanced glow when selected with rarity */
+.skin-item.selected.rarity-epic .skin-item-image-wrapper {
+  border-color: rgba(30, 144, 255, 0.9);
+  box-shadow: 0 0 14px rgba(30, 144, 255, 0.6), 0 0 24px rgba(30, 144, 255, 0.3);
+}
+
+.skin-item.selected.rarity-legendary .skin-item-image-wrapper {
+  border-color: rgba(255, 100, 50, 0.9);
+  box-shadow: 0 0 14px rgba(255, 100, 50, 0.6), 0 0 24px rgba(255, 100, 50, 0.3);
+}
+
+.skin-item.selected.rarity-mythic .skin-item-image-wrapper {
+  border-color: rgba(186, 85, 211, 0.9);
+  box-shadow: 0 0 14px rgba(186, 85, 211, 0.6), 0 0 24px rgba(186, 85, 211, 0.3);
+}
+
+.skin-item.selected.rarity-ultimate .skin-item-image-wrapper {
+  border-color: rgba(255, 200, 50, 0.95);
+  box-shadow: 0 0 16px rgba(255, 200, 50, 0.7), 0 0 28px rgba(255, 200, 50, 0.35);
+}
+
+.skin-item.selected.rarity-transcendent .skin-item-image-wrapper {
+  border-color: rgba(0, 255, 200, 0.95);
+  box-shadow: 0 0 16px rgba(0, 255, 200, 0.7), 0 0 28px rgba(0, 255, 200, 0.35);
+}
+
+.skin-item.selected.rarity-exalted .skin-item-image-wrapper {
+  border-color: rgba(180, 220, 100, 0.95);
+  box-shadow: 0 0 16px rgba(180, 220, 100, 0.7), 0 0 28px rgba(180, 220, 100, 0.35);
+}
+
+.skin-item-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+}
+
+/* [SELECTED-BADGE] Checkmark badge */
+.skin-item-selected-badge {
+  position: absolute;
+  bottom: 4px;
+  right: 4px;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 179, 217, 0.4);
+  border-radius: 4px;
+  box-shadow: 0 0 12px rgba(201, 75, 124, 0.5);
+}
+
+.skin-item-selected-badge svg {
+  width: 11px;
+  height: 11px;
+  color: rgba(255, 179, 217, 0.95);
+}
+
+/* [ITEM-INFO] Skin details */
+.skin-item-info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.skin-item-name {
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.95);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* [SKIN-ITEM-CHROMA] Compact chroma count badge */
+.skin-item-chroma {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 6px;
+  background: rgba(186, 85, 211, 0.12);
+  border: 1px solid rgba(186, 85, 211, 0.25);
+  border-radius: 3px;
+  font-size: 9px;
+  font-weight: 600;
+  color: rgba(186, 85, 211, 0.9);
+  letter-spacing: 0.01em;
+  width: fit-content;
+}
+
+/* [SKIN-ITEM-FORMS] Compact form count badge */
+.skin-item-forms {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 6px;
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  border-radius: 3px;
+  font-size: 9px;
+  font-weight: 600;
+  color: rgba(16, 185, 129, 0.9);
+  letter-spacing: 0.01em;
+  width: fit-content;
+}

@@ -1,0 +1,252 @@
+/**
+ * File: SettingsModal.cleanup.css
+ * Author: Wildflover
+ * Description: Cache cleanup section styles - stats, files, actions
+ * Language: CSS
+ */
+
+/* [CLEANUP] Cache cleanup section */
+.cleanup-section { display: flex; flex-direction: column; gap: 12px; }
+
+.cleanup-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 32px;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 11px;
+}
+
+.cleanup-spinner {
+  width: 24px;
+  height: 24px;
+  border: 2px solid rgba(201, 75, 124, 0.2);
+  border-top-color: #c94b7c;
+  border-radius: 50%;
+  animation: cleanupSpin 0.8s linear infinite;
+}
+
+@keyframes cleanupSpin { to { transform: rotate(360deg); } }
+
+/* [STATS] Cache statistics */
+.cleanup-stats { display: flex; flex-direction: column; gap: 8px; }
+
+.cleanup-stat {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(201, 75, 124, 0.2);
+  border-radius: 8px;
+}
+
+.cleanup-stat-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.cleanup-stat.small { padding: 8px 10px; }
+
+.stat-icon {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(201, 75, 124, 0.15);
+  border: 1px solid rgba(201, 75, 124, 0.25);
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+.stat-icon.small { width: 26px; height: 26px; }
+.stat-icon svg { width: 16px; height: 16px; color: #c94b7c; }
+.stat-icon.small svg { width: 12px; height: 12px; }
+
+.stat-info { display: flex; flex-direction: column; gap: 2px; min-width: 0; flex: 1; }
+.stat-label { font-size: 9px; color: rgba(255, 255, 255, 0.4); text-transform: uppercase; letter-spacing: 0.04em; }
+.stat-value { font-size: 11px; font-weight: 500; color: #fff; }
+.stat-value.path { font-size: 10px; color: rgba(255, 255, 255, 0.6); font-family: 'JetBrains Mono', monospace; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.stat-value.highlight { color: #c94b7c; font-weight: 600; }
+
+.stat-actions { display: flex; gap: 6px; margin-left: auto; flex-shrink: 0; }
+
+.stat-action-btn {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(201, 75, 124, 0.1);
+  border: 1px solid rgba(201, 75, 124, 0.2);
+  border-radius: 6px;
+  color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  position: relative;
+}
+
+.stat-action-btn:hover { background: rgba(201, 75, 124, 0.2); border-color: rgba(201, 75, 124, 0.4); color: #c94b7c; }
+.stat-action-btn.copied { background: rgba(0, 255, 136, 0.15); border-color: rgba(0, 255, 136, 0.35); color: #00ff88; }
+.stat-action-btn svg { width: 12px; height: 12px; }
+
+/* [TOOLTIP] Action button tooltips */
+.stat-action-btn[data-tooltip]::before {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%) scale(0.9);
+  padding: 5px 8px;
+  background: rgba(12, 8, 20, 0.98);
+  border: 1px solid rgba(201, 75, 124, 0.4);
+  border-radius: 5px;
+  color: #fff;
+  font-size: 9px;
+  font-weight: 500;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.15s ease;
+  pointer-events: none;
+  z-index: 100;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.stat-action-btn[data-tooltip]::after {
+  content: '';
+  position: absolute;
+  bottom: calc(100% + 2px);
+  left: 50%;
+  transform: translateX(-50%);
+  border: 4px solid transparent;
+  border-top-color: rgba(201, 75, 124, 0.4);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.15s ease;
+  pointer-events: none;
+  z-index: 100;
+}
+
+.stat-action-btn[data-tooltip]:hover::before,
+.stat-action-btn[data-tooltip]:hover::after {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) scale(1);
+}
+
+/* [FILES] File list section */
+.cleanup-files { display: flex; flex-direction: column; gap: 8px; }
+
+.files-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(201, 75, 124, 0.15);
+}
+
+.files-header > span { font-size: 10px; font-weight: 600; color: rgba(255, 179, 217, 0.7); text-transform: uppercase; letter-spacing: 0.04em; }
+
+.clear-all-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 8px;
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  border-radius: 6px;
+  color: #f87171;
+  font-size: 10px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.clear-all-btn:hover:not(:disabled) { background: rgba(239, 68, 68, 0.2); border-color: rgba(239, 68, 68, 0.5); }
+.clear-all-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+.clear-all-btn svg { width: 11px; height: 11px; }
+
+.btn-spinner {
+  width: 11px;
+  height: 11px;
+  border: 1.5px solid rgba(248, 113, 113, 0.3);
+  border-top-color: #f87171;
+  border-radius: 50%;
+  animation: cleanupSpin 0.8s linear infinite;
+}
+
+.files-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 24px;
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px dashed rgba(201, 75, 124, 0.2);
+  border-radius: 8px;
+}
+
+.files-empty svg { width: 28px; height: 28px; color: rgba(255, 179, 217, 0.3); }
+.files-empty span { font-size: 11px; color: rgba(255, 255, 255, 0.35); }
+
+/* [LIST] File list */
+.files-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  max-height: 180px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.files-list::-webkit-scrollbar { width: 3px; }
+.files-list::-webkit-scrollbar-thumb { background: rgba(201, 75, 124, 0.3); border-radius: 2px; }
+
+.file-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 8px;
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(201, 75, 124, 0.15);
+  border-radius: 6px;
+  transition: all 0.15s ease;
+}
+
+.file-item:hover { background: rgba(201, 75, 124, 0.08); border-color: rgba(201, 75, 124, 0.3); }
+
+.file-icon {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(201, 75, 124, 0.1);
+  border-radius: 5px;
+  flex-shrink: 0;
+}
+
+.file-icon svg { width: 12px; height: 12px; color: #c94b7c; }
+.file-info { display: flex; flex-direction: column; gap: 1px; flex: 1; min-width: 0; }
+.file-name { font-size: 11px; font-weight: 500; color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.file-size { font-size: 9px; color: rgba(255, 255, 255, 0.4); }
+
+.file-delete {
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  color: rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  opacity: 0;
+}
+
+.file-item:hover .file-delete { opacity: 1; }
+.file-delete:hover { background: rgba(239, 68, 68, 0.15); border-color: rgba(239, 68, 68, 0.3); color: #f87171; }
+.file-delete svg { width: 10px; height: 10px; }

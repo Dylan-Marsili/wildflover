@@ -1,0 +1,200 @@
+/**
+ * File: SkinSelector.forms.css
+ * Author: Wildflover
+ * Description: Tiered skin form selector and preview tooltip styles
+ * Language: CSS
+ */
+
+/* [FORM-SELECTOR] Tiered skin form selector */
+.form-selector {
+  margin-top: 0.875rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.form-selector-label {
+  display: block;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+}
+
+.form-selector-items {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+/* [FORM-ITEM] Individual form button with thumbnail */
+.form-item {
+  position: relative;
+  width: 52px;
+  height: 68px;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid rgba(201, 75, 124, 0.25);
+  background: rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.form-item:hover {
+  border-color: rgba(16, 185, 129, 0.5);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(16, 185, 129, 0.2);
+}
+
+.form-item.active {
+  border-color: #10b981;
+  box-shadow: 
+    0 0 0 2px rgba(12, 8, 20, 0.9),
+    0 0 20px rgba(16, 185, 129, 0.4);
+}
+
+.form-item-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+}
+
+/* [FORM-STAGE] Stage number indicator */
+.form-item-stage {
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.9) 0%, rgba(5, 150, 105, 0.9) 100%);
+  border-radius: 4px;
+  font-size: 0.625rem;
+  font-weight: 700;
+  color: #000;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+/* [FORM-CHECK] Selected checkmark overlay */
+.form-item-check {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(16, 185, 129, 0.2);
+  backdrop-filter: blur(2px);
+}
+
+.form-item-check svg {
+  width: 20px;
+  height: 20px;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.6));
+}
+
+/* [FORM-PREVIEW-TOOLTIP] Sharp professional form preview popup */
+.form-preview-tooltip {
+  position: fixed;
+  transform: translateX(-50%) translateY(-100%);
+  padding: 0;
+  background: rgba(12, 8, 20, 0.98);
+  border: 1px solid rgba(16, 185, 129, 0.4);
+  border-radius: 6px;
+  z-index: 999999;
+  pointer-events: none;
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.7),
+    0 0 0 1px rgba(0, 0, 0, 0.3);
+  animation: formPreviewFadeIn 0.15s ease-out;
+  overflow: hidden;
+  width: 180px;
+}
+
+@keyframes formPreviewFadeIn {
+  0% { 
+    opacity: 0; 
+    transform: translateX(-50%) translateY(-95%); 
+  }
+  100% { 
+    opacity: 1; 
+    transform: translateX(-50%) translateY(-100%); 
+  }
+}
+
+.form-preview-image-wrapper {
+  width: 100%;
+  aspect-ratio: 16/10;
+  overflow: hidden;
+  position: relative;
+  background: rgba(0, 0, 0, 0.4);
+  border-bottom: 1px solid rgba(16, 185, 129, 0.25);
+}
+
+.form-preview-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+/* [FORM-STAGE-BADGE] Stage number in preview */
+.form-preview-stage-badge {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(16, 185, 129, 0.95);
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 700;
+  color: #000;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+.form-preview-info {
+  padding: 10px 12px;
+  background: rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+.form-preview-accent-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #10b981;
+}
+
+.form-preview-name {
+  font-size: 11px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.95);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+  text-align: center;
+}
+
+/* [FORM-PREVIEW-ARROW] Bottom arrow indicator */
+.form-preview-arrow {
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+  width: 8px;
+  height: 8px;
+  background: rgba(0, 0, 0, 0.3);
+  border-right: 1px solid rgba(16, 185, 129, 0.4);
+  border-bottom: 1px solid rgba(16, 185, 129, 0.4);
+}

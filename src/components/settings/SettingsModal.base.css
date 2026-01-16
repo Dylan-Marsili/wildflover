@@ -1,0 +1,346 @@
+/**
+ * File: SettingsModal.base.css
+ * Author: Wildflover
+ * Description: Base modal styles - backdrop, container, header, close button
+ *              Upload Modal design pattern with gradient title and help tooltip
+ * Language: CSS
+ */
+
+/* [BACKDROP] Modal overlay with blur effect */
+.settings-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.88);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: settingsOverlayFadeIn 0.2s ease-out;
+  padding: 20px;
+}
+
+@keyframes settingsOverlayFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* [MODAL] Main container - sharp professional design */
+.settings-modal {
+  width: 100%;
+  max-width: 680px;
+  max-height: 78vh;
+  background: rgba(12, 8, 20, 0.98);
+  border: 1px solid rgba(201, 75, 124, 0.35);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: settingsModalSlideIn 0.2s ease-out;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+@keyframes settingsModalSlideIn {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* [HEADER] Modal header - Upload Modal style */
+.settings-header {
+  display: flex;
+  align-items: center;
+  padding: 14px 16px;
+  background: rgba(0, 0, 0, 0.25);
+  border-top: 1px solid rgba(255, 105, 180, 0.25);
+  border-bottom: 1px solid rgba(201, 75, 124, 0.25);
+}
+
+/* [HEADER-TITLE] Title and subtitle wrapper */
+.settings-header-title {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.settings-header-title h2 {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 700;
+  background: linear-gradient(135deg, #ff69b4 0%, #da70d6 50%, #ba55d3 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* [TITLE-ICON] Settings icon styling */
+.settings-title-icon {
+  width: 16px;
+  height: 16px;
+  stroke: #ff69b4;
+  flex-shrink: 0;
+  filter: drop-shadow(0 0 4px rgba(255, 105, 180, 0.4));
+  overflow: visible;
+}
+
+.settings-modal-subtitle {
+  font-size: 10px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.4);
+  letter-spacing: 0.02em;
+}
+
+/* [HEADER-ACTIONS] Help and close buttons */
+.settings-header-actions {
+  display: flex;
+  gap: 6px;
+}
+
+.settings-modal-help,
+.settings-modal-close {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(201, 75, 124, 0.15);
+  border: 1px solid rgba(201, 75, 124, 0.3);
+  border-radius: 6px;
+  color: rgba(255, 179, 217, 0.9);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  position: relative;
+}
+
+.settings-modal-help:hover { background: rgba(201, 75, 124, 0.3); color: #fff; }
+.settings-modal-close:hover { background: rgba(239, 68, 68, 0.25); color: #f87171; }
+.settings-modal-help svg, .settings-modal-close svg { width: 15px; height: 15px; overflow: visible; }
+
+/* [TOOLTIP] Show tooltip on hover */
+.settings-modal-help .settings-help-tooltip {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+}
+
+.settings-modal-help:hover .settings-help-tooltip {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* [HELP-TOOLTIP] Professional tooltip matching Upload Modal design */
+.settings-help-tooltip {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: -10px;
+  width: 260px;
+  padding: 12px;
+  background: rgba(12, 8, 20, 0.98);
+  border: 1px solid rgba(201, 75, 124, 0.4);
+  border-radius: 8px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6);
+  z-index: 10;
+  cursor: default;
+}
+
+.settings-help-tooltip::before {
+  content: '';
+  position: absolute;
+  top: -6px;
+  right: 16px;
+  width: 10px;
+  height: 10px;
+  background: rgba(12, 8, 20, 0.98);
+  border-left: 1px solid rgba(201, 75, 124, 0.4);
+  border-top: 1px solid rgba(201, 75, 124, 0.4);
+  transform: rotate(45deg);
+}
+
+.settings-help-title {
+  font-size: 11px;
+  font-weight: 700;
+  color: rgba(255, 179, 217, 1);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 6px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid rgba(201, 75, 124, 0.2);
+  text-align: center;
+}
+
+.settings-help-content {
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.45);
+  line-height: 1.3;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.settings-help-section {
+  margin-bottom: 8px;
+}
+
+.settings-help-section:last-child {
+  margin-bottom: 0;
+}
+
+.settings-help-section-title {
+  font-size: 9px;
+  font-weight: 700;
+  color: rgba(255, 179, 217, 0.6);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 5px;
+  padding-left: 4px;
+}
+
+.settings-help-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+  padding: 4px 6px;
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 3px;
+}
+
+.settings-help-item:last-child {
+  margin-bottom: 0;
+}
+
+.settings-help-label {
+  font-size: 10px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.8);
+  min-width: 60px;
+}
+
+.settings-help-desc {
+  font-size: 9px;
+  color: rgba(255, 255, 255, 0.4);
+  line-height: 1.2;
+}
+
+/* [CONTENT] Main content layout */
+.settings-content {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+/* [SIDEBAR] Tab navigation sidebar */
+.settings-sidebar {
+  width: 170px;
+  padding: 10px;
+  border-right: 1px solid rgba(201, 75, 124, 0.15);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+/* [TAB] Tab button */
+.settings-tab {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: inherit;
+  position: relative;
+  transition: all 0.15s ease;
+}
+
+.settings-tab .tab-icon {
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.settings-tab .tab-icon svg {
+  width: 16px;
+  height: 16px;
+  color: rgba(255, 255, 255, 0.3);
+  transition: color 0.15s ease;
+}
+
+.settings-tab .tab-label {
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.4);
+  transition: color 0.15s ease;
+}
+
+.settings-tab:hover {
+  background: rgba(201, 75, 124, 0.08);
+}
+
+.settings-tab:hover .tab-icon svg { color: #c94b7c; }
+.settings-tab:hover .tab-label { color: rgba(255, 255, 255, 0.85); }
+
+.settings-tab.active {
+  background: rgba(201, 75, 124, 0.12);
+  border-color: rgba(201, 75, 124, 0.3);
+}
+
+.settings-tab.active::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 50%;
+  background: linear-gradient(180deg, #c94b7c 0%, #8b3a62 100%);
+  border-radius: 0 3px 3px 0;
+}
+
+.settings-tab.active .tab-icon svg { color: #c94b7c; }
+.settings-tab.active .tab-label { color: #fff; }
+
+/* [MAIN] Main content area */
+.settings-main {
+  flex: 1;
+  padding: 14px;
+  overflow-y: auto;
+}
+
+.settings-main::-webkit-scrollbar { width: 4px; }
+.settings-main::-webkit-scrollbar-thumb { 
+  background: rgba(201, 75, 124, 0.3); 
+  border-radius: 2px; 
+}
+
+.settings-section {
+  animation: settingsSectionFadeIn 0.2s ease-out;
+}
+
+@keyframes settingsSectionFadeIn {
+  from { opacity: 0; transform: translateX(8px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.section-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: rgba(248, 113, 113, 0.95);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin: 0 0 4px 0;
+}
+
+.section-desc {
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.35);
+  margin: 0 0 14px 0;
+}

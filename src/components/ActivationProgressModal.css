@@ -1,0 +1,10 @@
+/**
+ * File: ActivationProgressModal.css
+ * Author: Wildflover
+ * Description: Main CSS entry point - imports modular activation progress styles
+ * Language: CSS
+ */
+
+@import './activation-progress/ActivationProgressModal.base.css';
+@import './activation-progress/ActivationProgressModal.items.css';
+@import './activation-progress/ActivationProgressModal.footer.css';

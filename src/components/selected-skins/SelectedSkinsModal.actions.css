@@ -1,0 +1,220 @@
+/**
+ * File: SelectedSkinsModal.actions.css
+ * Author: Wildflover
+ * Description: Action buttons, tooltips, footer styles with color variants
+ * Language: CSS
+ */
+
+/* [ITEM-ACTIONS] Action buttons */
+.selected-item-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.action-btn-wrapper {
+  position: relative;
+}
+
+/* [ACTION-BTN] Base button style */
+.selected-action-btn {
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.selected-action-btn svg {
+  width: 15px;
+  height: 15px;
+}
+
+/* [BTN-FORM] Form/Stage remove - Emerald Green */
+.selected-action-btn.form-remove {
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  color: rgba(16, 185, 129, 0.7);
+}
+
+.selected-action-btn.form-remove:hover {
+  background: rgba(16, 185, 129, 0.2);
+  border-color: rgba(16, 185, 129, 0.5);
+  color: #10b981;
+  transform: scale(1.05);
+  box-shadow: 0 0 12px rgba(16, 185, 129, 0.2);
+}
+
+/* [BTN-CHROMA] Chroma remove - Purple/Violet */
+.selected-action-btn.chroma-remove {
+  background: rgba(186, 85, 211, 0.1);
+  border: 1px solid rgba(186, 85, 211, 0.25);
+  color: rgba(186, 85, 211, 0.7);
+}
+
+.selected-action-btn.chroma-remove:hover {
+  background: rgba(186, 85, 211, 0.2);
+  border-color: rgba(186, 85, 211, 0.5);
+  color: #ba55d3;
+  transform: scale(1.05);
+  box-shadow: 0 0 12px rgba(186, 85, 211, 0.2);
+}
+
+/* [BTN-SKIN] Skin remove - Red/Coral */
+.selected-action-btn.skin-remove {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  color: rgba(248, 113, 113, 0.7);
+}
+
+.selected-action-btn.skin-remove:hover {
+  background: rgba(239, 68, 68, 0.2);
+  border-color: rgba(239, 68, 68, 0.5);
+  color: #f87171;
+  transform: scale(1.05);
+  box-shadow: 0 0 12px rgba(239, 68, 68, 0.2);
+}
+
+/* [BTN-CUSTOM] Custom mod remove - Pink/Magenta */
+.selected-action-btn.custom-remove {
+  background: rgba(201, 75, 124, 0.1);
+  border: 1px solid rgba(201, 75, 124, 0.25);
+  color: rgba(255, 179, 217, 0.7);
+}
+
+.selected-action-btn.custom-remove:hover {
+  background: rgba(201, 75, 124, 0.2);
+  border-color: rgba(201, 75, 124, 0.5);
+  color: #ffb3d9;
+  transform: scale(1.05);
+  box-shadow: 0 0 12px rgba(201, 75, 124, 0.2);
+}
+
+/* [TOOLTIP] Base tooltip style */
+.action-tooltip {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  right: 0;
+  padding: 6px 10px;
+  background: rgba(12, 8, 20, 0.98);
+  border-radius: 5px;
+  font-size: 10px;
+  font-weight: 600;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.15s ease;
+  z-index: 100;
+  pointer-events: none;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+}
+
+.action-tooltip::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  right: 10px;
+  width: 8px;
+  height: 8px;
+  background: rgba(12, 8, 20, 0.98);
+  transform: rotate(45deg);
+}
+
+.action-btn-wrapper:hover .action-tooltip {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* [TOOLTIP-FORM] Emerald Green */
+.action-tooltip.form-tooltip {
+  border: 1px solid rgba(16, 185, 129, 0.4);
+  color: #10b981;
+}
+.action-tooltip.form-tooltip::after {
+  border-right: 1px solid rgba(16, 185, 129, 0.4);
+  border-bottom: 1px solid rgba(16, 185, 129, 0.4);
+}
+
+/* [TOOLTIP-CHROMA] Purple/Violet */
+.action-tooltip.chroma-tooltip {
+  border: 1px solid rgba(186, 85, 211, 0.4);
+  color: #ba55d3;
+}
+.action-tooltip.chroma-tooltip::after {
+  border-right: 1px solid rgba(186, 85, 211, 0.4);
+  border-bottom: 1px solid rgba(186, 85, 211, 0.4);
+}
+
+/* [TOOLTIP-SKIN] Red/Coral */
+.action-tooltip.skin-tooltip {
+  border: 1px solid rgba(239, 68, 68, 0.4);
+  color: #f87171;
+}
+.action-tooltip.skin-tooltip::after {
+  border-right: 1px solid rgba(239, 68, 68, 0.4);
+  border-bottom: 1px solid rgba(239, 68, 68, 0.4);
+}
+
+/* [TOOLTIP-CUSTOM] Pink/Magenta */
+.action-tooltip.custom-tooltip {
+  border: 1px solid rgba(201, 75, 124, 0.4);
+  color: #ffb3d9;
+}
+.action-tooltip.custom-tooltip::after {
+  border-right: 1px solid rgba(201, 75, 124, 0.4);
+  border-bottom: 1px solid rgba(201, 75, 124, 0.4);
+}
+
+/* [FOOTER] */
+.selected-modal-footer {
+  padding: 10px 14px;
+  background: rgba(0, 0, 0, 0.2);
+  border-top: 1px solid rgba(201, 75, 124, 0.15);
+}
+
+/* [RESET-BTN] */
+.selected-reset-all {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px;
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  border-radius: 6px;
+  color: #f87171;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.selected-reset-all:hover {
+  background: rgba(239, 68, 68, 0.2);
+  border-color: rgba(239, 68, 68, 0.5);
+}
+
+.selected-reset-all svg {
+  width: 14px;
+  height: 14px;
+  transition: transform 0.2s ease;
+}
+
+.selected-reset-all:hover svg {
+  transform: rotate(-45deg);
+}
+
+/* [LOCKED] Disabled state */
+.selected-action-btn.locked,
+.selected-action-btn:disabled,
+.selected-reset-all.locked,
+.selected-reset-all:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  pointer-events: none;
+}

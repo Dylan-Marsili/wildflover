@@ -1,0 +1,209 @@
+/**
+ * File: FavoritesScreen.css
+ * Author: Wildflover
+ * Description: Favorites screen styles - modern dark theme
+ * Language: CSS
+ */
+
+/* [BASE] Screen container */
+.favorites-screen {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.5rem 2rem;
+  overflow-y: auto;
+}
+
+.favorites-screen::-webkit-scrollbar {
+  width: 6px;
+}
+
+.favorites-screen::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.favorites-screen::-webkit-scrollbar-thumb {
+  background: rgba(255, 105, 180, 0.4);
+  border-radius: 3px;
+}
+
+/* [HEADER] Page header */
+.favorites-header {
+  text-align: center;
+  padding: 0.5rem 0;
+}
+
+.favorites-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin: 0;
+  background: linear-gradient(135deg, #ffffff 0%, #e8e8e8 30%, #d0d0d0 60%, #b8b8b8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: inline-block;
+}
+
+.favorites-subtitle {
+  font-size: 0.8125rem;
+  color: rgba(255, 255, 255, 0.45);
+  margin: 0.25rem 0 0 0;
+}
+
+/* [STATS] Stats bar - modern layout */
+.favorites-stats {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  background: rgba(20, 12, 30, 0.5);
+  border: 1px solid rgba(255, 105, 180, 0.1);
+  border-radius: 10px;
+}
+
+.stats-left {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.stat-item {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.stat-item svg {
+  width: 16px;
+  height: 16px;
+  color: rgba(255, 105, 180, 0.6);
+}
+
+.stat-value {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.stat-label {
+  font-size: 0.6875rem;
+  color: rgba(255, 255, 255, 0.45);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.stat-divider {
+  width: 1px;
+  height: 20px;
+  background: rgba(255, 105, 180, 0.15);
+}
+
+.stats-right {
+  margin-left: auto;
+}
+
+.clear-all-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.6rem;
+  background: transparent;
+  border: 1px solid rgba(255, 80, 80, 0.3);
+  border-radius: 6px;
+  color: rgba(255, 100, 100, 0.7);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s ease-out;
+}
+
+.clear-all-btn:hover {
+  background: rgba(255, 80, 80, 0.15);
+  border-color: rgba(255, 80, 80, 0.5);
+  color: #ff6b6b;
+}
+
+.clear-all-btn svg {
+  width: 12px;
+  height: 12px;
+}
+
+/* [CONTENT] Main content area */
+.favorites-content {
+  flex: 1;
+  min-height: 0;
+}
+
+/* [GRID] Champions grid - same as HomeScreen */
+.favorites-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1rem;
+}
+
+/* [EMPTY] Empty state */
+.favorites-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 5rem 2rem;
+  text-align: center;
+}
+
+.empty-icon {
+  width: 72px;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+  background: rgba(255, 105, 180, 0.06);
+  border: 1px dashed rgba(255, 105, 180, 0.2);
+  border-radius: 50%;
+}
+
+.empty-icon svg {
+  width: 32px;
+  height: 32px;
+  color: rgba(255, 105, 180, 0.35);
+}
+
+.empty-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0 0 0.4rem 0;
+}
+
+.empty-desc {
+  font-size: 0.8125rem;
+  color: rgba(255, 255, 255, 0.4);
+  margin: 0;
+  max-width: 280px;
+  line-height: 1.5;
+}
+
+/* [LOADING] Loading state */
+.favorites-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 5rem 2rem;
+  gap: 1rem;
+}
+
+.loading-spinner {
+  width: 36px;
+  height: 36px;
+  border: 2px solid rgba(255, 105, 180, 0.15);
+  border-top-color: rgba(255, 105, 180, 0.7);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}

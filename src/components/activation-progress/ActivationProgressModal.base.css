@@ -1,0 +1,209 @@
+/**
+ * File: ActivationProgressModal.base.css
+ * Author: Wildflover
+ * Description: Base styles - overlay, modal, header, progress bar components
+ * Language: CSS
+ */
+
+/* [OVERLAY] Modal backdrop - dark professional */
+.activation-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.92);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 99999;
+  animation: activationOverlayIn 0.2s ease-out;
+  padding: 20px;
+}
+
+@keyframes activationOverlayIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* [MODAL] Main container - sharp professional design */
+.activation-modal {
+  width: 100%;
+  max-width: 480px;
+  max-height: 85vh;
+  background: rgba(12, 8, 20, 0.98);
+  border: 1px solid rgba(255, 180, 50, 0.35);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: activationModalIn 0.2s ease-out;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.activation-modal.complete {
+  border-color: rgba(0, 255, 136, 0.4);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 40px rgba(0, 255, 136, 0.08);
+}
+
+@keyframes activationModalIn {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* [HEADER] Modal header - amber processing theme */
+.activation-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px;
+  background: rgba(255, 180, 50, 0.08);
+  border-bottom: 1px solid rgba(255, 180, 50, 0.2);
+  transition: all 0.3s ease;
+}
+
+.activation-modal.complete .activation-modal-header {
+  background: rgba(0, 255, 136, 0.06);
+  border-bottom-color: rgba(0, 255, 136, 0.2);
+}
+
+.activation-title-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* [ICON] Stage icon container */
+.activation-icon {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 180, 50, 0.15);
+  border: 1px solid rgba(255, 180, 50, 0.3);
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.activation-icon svg { width: 18px; height: 18px; }
+.activation-icon.default { background: rgba(255, 255, 255, 0.06); border-color: rgba(255, 255, 255, 0.12); color: rgba(255, 255, 255, 0.5); }
+.activation-icon.cyan { background: rgba(0, 200, 255, 0.12); border-color: rgba(0, 200, 255, 0.3); color: #00c8ff; }
+.activation-icon.amber { background: rgba(255, 180, 50, 0.15); border-color: rgba(255, 180, 50, 0.3); color: #ffb432; }
+.activation-icon.success { background: rgba(0, 255, 136, 0.15); border-color: rgba(0, 255, 136, 0.35); color: #00ff88; }
+.activation-icon.error { background: rgba(239, 68, 68, 0.15); border-color: rgba(239, 68, 68, 0.3); color: #f87171; }
+
+/* [SPINNER] Loading spinner */
+.activation-spinner {
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(255, 180, 50, 0.2);
+  border-top-color: #ffb432;
+  border-radius: 50%;
+  animation: activationSpin 0.8s linear infinite;
+}
+
+@keyframes activationSpin { to { transform: rotate(360deg); } }
+
+/* [TITLE] Title section */
+.activation-title-text { display: flex; flex-direction: column; gap: 2px; }
+
+.activation-title {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 700;
+  color: rgba(255, 200, 100, 0.95);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  transition: color 0.3s ease;
+}
+
+.activation-modal.complete .activation-title { color: rgba(0, 255, 136, 0.95); }
+
+.activation-stage { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.03em; }
+.activation-stage.cyan { color: #00c8ff; }
+.activation-stage.amber { color: #ffb432; }
+.activation-stage.success { color: #00ff88; }
+.activation-stage.error { color: #f87171; }
+
+/* [CLOSE] Close button */
+.activation-close {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 255, 136, 0.12);
+  border: 1px solid rgba(0, 255, 136, 0.25);
+  border-radius: 6px;
+  color: rgba(0, 255, 136, 0.8);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.activation-close:hover {
+  background: rgba(0, 255, 136, 0.2);
+  border-color: rgba(0, 255, 136, 0.4);
+  color: #00ff88;
+}
+
+.activation-close svg { width: 14px; height: 14px; }
+
+/* [PROGRESS] Progress bar section */
+.activation-progress-section {
+  padding: 14px;
+  background: rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid rgba(255, 180, 50, 0.12);
+  transition: border-color 0.3s ease;
+}
+
+.activation-modal.complete .activation-progress-section { border-bottom-color: rgba(0, 255, 136, 0.12); }
+
+.activation-progress-bar {
+  position: relative;
+  height: 6px;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.activation-progress-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.3s ease-out, background 0.3s ease;
+}
+
+.activation-progress-fill.cyan { background: linear-gradient(90deg, #00c8ff 0%, #0090cc 100%); }
+.activation-progress-fill.amber { background: linear-gradient(90deg, #ffb432 0%, #ff9500 100%); }
+.activation-progress-fill.success { background: linear-gradient(90deg, #00ff88 0%, #00cc6a 100%); }
+.activation-progress-fill.error { background: linear-gradient(90deg, #f87171 0%, #dc2626 100%); }
+
+.activation-progress-glow {
+  position: absolute;
+  top: -2px;
+  left: 0;
+  height: 10px;
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 180, 50, 0.3) 50%, transparent 100%);
+  filter: blur(4px);
+  transition: width 0.3s ease-out;
+  pointer-events: none;
+}
+
+.activation-modal.complete .activation-progress-glow {
+  background: linear-gradient(90deg, transparent 0%, rgba(0, 255, 136, 0.3) 50%, transparent 100%);
+}
+
+.activation-progress-info { display: flex; justify-content: space-between; align-items: center; margin-top: 10px; }
+.activation-progress-text { font-size: 11px; color: rgba(255, 255, 255, 0.5); }
+
+.activation-progress-percent {
+  font-size: 12px;
+  font-weight: 700;
+  color: #ffb432;
+  font-family: 'JetBrains Mono', 'Consolas', monospace;
+  transition: color 0.3s ease;
+}
+
+.activation-modal.complete .activation-progress-percent { color: #00ff88; }

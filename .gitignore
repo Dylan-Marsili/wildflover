@@ -1,0 +1,89 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Testing
+coverage/
+
+# Production
+dist/
+dist-ssr/
+build/
+
+# Tauri
+src-tauri/target/
+src-tauri/WixTools/
+
+# Tools
+tools/__pycache__/
+tools/*.pyc
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+.venv
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Editor
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Environment Variables (NEVER commit these)
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Discord OAuth2 Secrets (NEVER commit these)
+discord.config.ts
+*.secret
+*.secrets.json
+
+# Downloads
+downloads/
+Wildflower/
+
+# Wildflover specific
+*.dll
+*.exe
+!managers/*.exe
+!managers/*.dll
+
+# DLL Fix state files (local cache)
+.dll_fix_state
+
+# Profile Cache (local user data)
+profiles/
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+
+# Kiro IDE
+.kiro/
+
+# Package lock (optional - uncomment if you want to ignore)
+# package-lock.json

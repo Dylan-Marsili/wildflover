@@ -1,0 +1,45 @@
+{
+  "_comment": "Marketplace Catalog - Upload this to GitHub repo as index.json",
+  "_repo": "https://github.com/Jeremyymxiao/wildflover-marketplace",
+  
+  "version": "1.0.0",
+  "lastUpdated": "2025-01-11T00:00:00.000Z",
+  "totalMods": 2,
+  
+  "mods": [
+    {
+      "id": "ahri-spirit-blossom-custom",
+      "name": "Spirit Blossom Ahri - Custom Edition",
+      "description": "Custom recolor of Spirit Blossom Ahri with enhanced VFX",
+      "title": "Ahri",
+      "author": "Wildflover",
+      "authorId": "485877888697540629",
+      "version": "1.0.0",
+      "fileSize": 15728640,
+      "downloadCount": 0,
+      "likeCount": 0,
+      "tags": ["skin", "vfx", "recolor"],
+      "createdAt": "2025-01-11T00:00:00.000Z",
+      "updatedAt": "2025-01-11T00:00:00.000Z",
+      "downloadUrl": "https://raw.githubusercontent.com/Jeremyymxiao/wildflover-marketplace/main/mods/ahri-spirit-blossom-custom/mod.fantome",
+      "previewUrl": "https://raw.githubusercontent.com/Jeremyymxiao/wildflover-marketplace/main/mods/ahri-spirit-blossom-custom/preview.jpg"
+    },
+    {
+      "id": "yasuo-nightbringer-edit",
+      "name": "Nightbringer Yasuo - Dark Edition",
+      "description": "Darker color palette for Nightbringer Yasuo",
+      "title": "Yasuo",
+      "author": "Wildflover",
+      "authorId": "485877888697540629",
+      "version": "1.0.0",
+      "fileSize": 12582912,
+      "downloadCount": 0,
+      "likeCount": 0,
+      "tags": ["skin", "recolor"],
+      "createdAt": "2025-01-10T00:00:00.000Z",
+      "updatedAt": "2025-01-10T00:00:00.000Z",
+      "downloadUrl": "https://raw.githubusercontent.com/Jeremyymxiao/wildflover-marketplace/main/mods/yasuo-nightbringer-edit/mod.fantome",
+      "previewUrl": "https://raw.githubusercontent.com/Jeremyymxiao/wildflover-marketplace/main/mods/yasuo-nightbringer-edit/preview.jpg"
+    }
+  ]
+}

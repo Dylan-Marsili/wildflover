@@ -1,0 +1,617 @@
+/**
+ * File: CustomCard.css
+ * Author: Wildflover
+ * Description: Custom mod card styling with glassmorphism and anime aesthetics
+ * Language: CSS
+ */
+
+/* ============================================================================
+   [CARD-BASE] Custom mod card container
+   ============================================================================ */
+
+.custom-card {
+  position: relative;
+  aspect-ratio: 3/4;
+  border-radius: 4px;
+  cursor: default;
+  background: rgba(12, 10, 18, 0.95);
+  border: 1px solid rgba(201, 75, 124, 0.2);
+  contain: layout style paint;
+  transition: all 0.2s ease;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.custom-card:hover {
+  border-color: rgba(201, 75, 124, 0.5);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5), 0 0 1px rgba(201, 75, 124, 0.4);
+}
+
+.custom-card.active {
+  border-color: rgba(201, 75, 124, 0.8);
+  box-shadow: 
+    0 0 12px rgba(201, 75, 124, 0.4),
+    0 0 24px rgba(201, 75, 124, 0.2),
+    0 4px 16px rgba(0, 0, 0, 0.5);
+}
+
+/* ============================================================================
+   [IMAGE] Thumbnail section - Wrapper prevents overflow
+   ============================================================================ */
+
+.custom-card-image {
+  position: absolute;
+  inset: 0;
+  cursor: pointer;
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+.custom-card-thumbnail {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.3s ease-out;
+}
+
+.custom-card:hover .custom-card-thumbnail {
+  transform: scale(1.08);
+}
+
+.custom-card-image-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: rgba(0, 0, 0, 0.7);
+  opacity: 0;
+  transition: opacity 0.2s ease-out;
+}
+
+.custom-card-image:hover .custom-card-image-overlay {
+  opacity: 1;
+}
+
+.custom-card-image-overlay svg {
+  width: 32px;
+  height: 32px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.custom-card-image-overlay span {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.custom-card-file-input {
+  display: none;
+}
+
+/* ============================================================================
+   [GRADIENT] Bottom gradient overlay
+   ============================================================================ */
+
+.custom-card-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg,
+    transparent 0%,
+    rgba(0, 0, 0, 0.05) 40%,
+    rgba(12, 10, 18, 0.85) 80%,
+    rgba(12, 10, 18, 0.95) 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+  border-radius: 4px;
+}
+
+/* ============================================================================
+   [EXTENSION] Source badge - CUSTOMS or MARKETPLACE
+   ============================================================================ */
+
+.custom-card-extension {
+  position: absolute;
+  top: 0.625rem;
+  left: 0.625rem;
+  padding: 0.25rem 0.625rem;
+  background: rgba(12, 10, 18, 0.9);
+  border: 1px solid rgba(201, 75, 124, 0.4);
+  border-radius: 4px;
+  font-size: 0.625rem;
+  font-weight: 700;
+  background-clip: padding-box;
+  backdrop-filter: blur(8px);
+  z-index: 5;
+  letter-spacing: 0.05em;
+}
+
+.custom-card-extension span {
+  background: linear-gradient(135deg, #c94b7c 0%, #ffb3d9 50%, #8b3a62 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* [MARKETPLACE] Marketplace source badge - cyan/blue gradient */
+.custom-card-extension.marketplace {
+  border-color: rgba(56, 189, 248, 0.5);
+}
+
+.custom-card-extension.marketplace span {
+  background: linear-gradient(135deg, #38bdf8 0%, #818cf8 50%, #6366f1 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ============================================================================
+   [MENU] Options menu button with circular hover frame
+   ============================================================================ */
+
+.custom-card-menu-btn {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(201, 75, 124, 0.2);
+  border-radius: 50%;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: opacity 0.15s ease-out, transform 0.15s ease-out, background 0.15s ease-out, border-color 0.2s ease-out;
+  z-index: 4;
+}
+
+.custom-card:hover .custom-card-menu-btn {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* [HOVER-FRAME] Modern circular border frame effect */
+.custom-card-menu-btn::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  padding: 2px;
+  background: linear-gradient(135deg, 
+    rgba(201, 75, 124, 0.6) 0%, 
+    rgba(255, 179, 217, 0.4) 50%, 
+    rgba(168, 61, 104, 0.6) 100%
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 0.25s ease-out, transform 0.25s ease-out;
+}
+
+.custom-card-menu-btn:hover::before {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.custom-card-menu-btn:hover {
+  background: rgba(201, 75, 124, 0.25);
+  border-color: rgba(201, 75, 124, 0.6);
+  box-shadow: 
+    0 0 8px rgba(201, 75, 124, 0.3),
+    0 0 16px rgba(201, 75, 124, 0.15);
+}
+
+.custom-card-menu-btn svg {
+  width: 14px;
+  height: 14px;
+  color: rgba(255, 255, 255, 0.8);
+  transition: color 0.2s ease-out;
+}
+
+.custom-card-menu-btn:hover svg {
+  color: rgba(255, 179, 217, 0.95);
+}
+
+/* ============================================================================
+   [DROPDOWN] Options dropdown menu
+   ============================================================================ */
+
+.custom-card-dropdown {
+  position: absolute;
+  top: 2.5rem;
+  right: 0.5rem;
+  min-width: 120px;
+  background: rgba(12, 10, 18, 0.95);
+  border: 1px solid rgba(201, 75, 124, 0.35);
+  border-radius: 4px;
+  padding: 0.25rem;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+  z-index: 10;
+  animation: dropdownFadeIn 0.15s ease-out;
+}
+
+@keyframes dropdownFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dropdown-option {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.5rem 0.625rem;
+  background: transparent;
+  border: none;
+  border-radius: 3px;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.75rem;
+  font-weight: 500;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  transition: all 0.12s ease;
+}
+
+.dropdown-option svg {
+  width: 14px;
+  height: 14px;
+  opacity: 0.7;
+}
+
+.dropdown-option:hover {
+  background: rgba(201, 75, 124, 0.18);
+  color: #ffffff;
+}
+
+.dropdown-option:hover svg {
+  opacity: 1;
+}
+
+.dropdown-option.delete:hover {
+  background: rgba(220, 60, 60, 0.18);
+  color: #ff7b7b;
+}
+
+.dropdown-option.delete:hover svg {
+  stroke: #ff7b7b;
+}
+
+/* ============================================================================
+   [CONTENT] Card content area
+   ============================================================================ */
+
+.custom-card-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  z-index: 2;
+}
+
+/* [CONTENT-ROW] Removed - deselect button removed */
+
+.custom-card-name {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0;
+  line-height: 1.3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex: 1;
+  transition: color 0.2s ease-out;
+}
+
+.custom-card:hover .custom-card-name {
+  color: rgba(255, 179, 217, 0.95);
+}
+
+.custom-card-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-size: 0.625rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.custom-card-separator {
+  color: rgba(201, 75, 124, 0.4);
+}
+
+.custom-card-size {
+  font-weight: 500;
+}
+
+.custom-card-date {
+  font-weight: 400;
+}
+
+/* [EDIT] Name edit mode */
+
+.custom-card-edit {
+  width: 100%;
+}
+
+.custom-card-edit-input {
+  width: 100%;
+  padding: 0.375rem 0.5rem;
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(201, 75, 124, 0.4);
+  border-radius: 4px;
+  color: #ffffff;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  font-family: 'Inter', sans-serif;
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+
+.custom-card-edit-input:focus {
+  border-color: rgba(201, 75, 124, 0.7);
+}
+
+/* ============================================================================
+   [TOGGLE] Active toggle button - Bottom right position
+   ============================================================================ */
+
+.custom-card-toggle {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(201, 75, 124, 0.2);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease-out;
+  z-index: 15;
+}
+
+.custom-card-toggle svg {
+  width: 16px;
+  height: 16px;
+  color: rgba(255, 255, 255, 0.6);
+  transition: color 0.15s ease;
+}
+
+.custom-card-toggle:hover {
+  background: rgba(201, 75, 124, 0.2);
+  border-color: rgba(201, 75, 124, 0.5);
+}
+
+.custom-card-toggle:hover svg {
+  color: rgba(255, 179, 217, 0.9);
+}
+
+.custom-card-toggle.active {
+  background: rgba(201, 75, 124, 0.25);
+  border-color: rgba(201, 75, 124, 0.6);
+}
+
+.custom-card-toggle.active svg {
+  color: rgba(255, 179, 217, 0.95);
+}
+
+/* ============================================================================
+   [TOOLTIP] Portal-based anime-style tooltip
+   ============================================================================ */
+
+.custom-tooltip {
+  z-index: 99999;
+  pointer-events: none;
+  animation: tooltipFadeIn 0.15s ease-out;
+}
+
+@keyframes tooltipFadeIn {
+  from {
+    opacity: 0;
+    transform: translate(-100%, -50%) translateX(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-100%, -50%) translateX(0);
+  }
+}
+
+.custom-tooltip-text {
+  display: block;
+  padding: 0.5rem 0.875rem;
+  background: rgba(12, 10, 18, 0.9);
+  border: 1px solid rgba(201, 75, 124, 0.25);
+  border-radius: 4px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+}
+
+.custom-tooltip-gradient {
+  font-size: 0.75rem;
+  font-weight: 700;
+  white-space: nowrap;
+  letter-spacing: 0.03em;
+  background: linear-gradient(135deg, rgba(201, 75, 124, 0.95) 0%, rgba(255, 179, 217, 0.9) 50%, rgba(168, 61, 104, 0.95) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.custom-tooltip-arrow {
+  position: absolute;
+  right: -6px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  border-left-color: rgba(12, 10, 18, 0.9);
+}
+
+/* ============================================================================
+   [INDICATOR] Active state border indicator - Anime theme
+   ============================================================================ */
+
+.custom-card-active-indicator {
+  position: absolute;
+  inset: 0;
+  border-radius: 4px;
+  z-index: 1;
+  pointer-events: none;
+  padding: 2px;
+  background: linear-gradient(135deg, rgba(201, 75, 124, 1) 0%, rgba(168, 61, 104, 0.95) 50%, rgba(139, 58, 98, 1) 100%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  box-shadow: 
+    0 0 8px rgba(201, 75, 124, 0.5),
+    0 0 16px rgba(201, 75, 124, 0.3),
+    inset 0 0 4px rgba(201, 75, 124, 0.2);
+}
+
+/* [CORNER-CUTS] Sharp anime style cut corners */
+.custom-card-active-indicator::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  width: 12px;
+  height: 12px;
+  background: linear-gradient(135deg, transparent 50%, rgba(201, 75, 124, 1) 50%);
+  clip-path: polygon(0 0, 100% 0, 0 100%);
+  filter: drop-shadow(0 0 4px rgba(201, 75, 124, 0.6));
+}
+
+.custom-card-active-indicator::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  right: -1px;
+  width: 12px;
+  height: 12px;
+  background: linear-gradient(315deg, transparent 50%, rgba(139, 58, 98, 1) 50%);
+  clip-path: polygon(100% 0, 100% 100%, 0 100%);
+  filter: drop-shadow(0 0 4px rgba(139, 58, 98, 0.6));
+}
+
+
+/* ============================================================================
+   [LOCKED] Card locked/disabled state when mods are active
+   - Permanent dimmed appearance with grayscale effect
+   - Lock icon visible on hover
+   - All interactions disabled
+   ============================================================================ */
+
+.custom-card.locked {
+  cursor: not-allowed;
+  pointer-events: auto;
+  filter: grayscale(0.6) brightness(0.65);
+  opacity: 0.7;
+  transition: filter 0.3s ease, opacity 0.3s ease;
+}
+
+/* [LOCKED-OVERLAY] Permanent dark overlay */
+.custom-card.locked::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 10;
+  border-radius: 4px;
+  opacity: 1;
+  transition: opacity 0.2s ease;
+}
+
+/* [LOCKED-HOVER] Slightly brighter on hover */
+.custom-card.locked:hover {
+  filter: grayscale(0.5) brightness(0.75);
+  opacity: 0.8;
+  border-color: rgba(201, 75, 124, 0.2);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+.custom-card.locked:hover::before {
+  opacity: 0.6;
+}
+
+.custom-card.locked:hover .custom-card-thumbnail {
+  transform: none;
+}
+
+.custom-card.locked .custom-card-image-overlay {
+  display: none;
+}
+
+/* [LOCKED-ELEMENTS] Disable interactive elements */
+.custom-card.locked .custom-card-menu-btn {
+  pointer-events: none;
+  opacity: 0.3;
+}
+
+.custom-card.locked .custom-card-toggle {
+  pointer-events: none;
+  opacity: 0.4;
+}
+
+.custom-card.locked .custom-card-content {
+  opacity: 0.7;
+}
+
+.custom-card.locked .custom-card-active-indicator {
+  opacity: 0.4;
+}
+
+/* [LOCK-OVERLAY] Lock icon overlay - visible on hover */
+.custom-card-lock-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  z-index: 15;
+  border-radius: 4px;
+}
+
+.custom-card.locked:hover .custom-card-lock-overlay {
+  opacity: 1;
+}
+
+.custom-card-lock-overlay .lock-icon {
+  width: 40px;
+  height: 40px;
+  color: rgba(255, 255, 255, 0.85);
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.5));
+  animation: customLockPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes customLockPulse {
+  0%, 100% { transform: scale(1); opacity: 0.85; }
+  50% { transform: scale(1.05); opacity: 1; }
+}

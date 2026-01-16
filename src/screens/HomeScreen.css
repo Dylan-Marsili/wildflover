@@ -1,0 +1,709 @@
+/**
+ * File: HomeScreen.css
+ * Author: Wildflover
+ * Description: GPU-optimized home screen styles with CSS containment
+ *              - Reduced backdrop-filter blur radius for performance
+ *              - Simplified gradients to solid colors where possible
+ *              - Optimized transition properties (specific vs 'all')
+ * Language: CSS
+ */
+
+/* ============================================================================
+   HOME SCREEN BASE
+   ============================================================================ */
+
+.home-screen {
+  width: 100%;
+  height: 100%;
+  padding: 1.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  overflow-y: auto;
+  contain: layout style;
+}
+
+.home-screen::-webkit-scrollbar {
+  width: 6px;
+}
+
+.home-screen::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.home-screen::-webkit-scrollbar-thumb {
+  background: rgba(255, 105, 180, 0.4);
+  border-radius: 3px;
+}
+
+/* ============================================================================
+   HEADER
+   ============================================================================ */
+
+.home-header {
+  text-align: center;
+  padding: 0.5rem 0;
+  opacity: 0;
+  animation: headerFadeIn 0.6s ease-out forwards;
+}
+
+@keyframes headerFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.home-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin: 0;
+  color: #c94b7c !important;
+  background: linear-gradient(135deg, #ffb3d9 0%, #c94b7c 50%, #ff69b4 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+  display: inline-block;
+}
+
+.home-subtitle {
+  font-size: 0.8125rem;
+  color: rgba(255, 255, 255, 0.45);
+  margin: 0.25rem 0 0 0;
+}
+
+/* ============================================================================
+   STATS SECTION
+   ============================================================================ */
+
+.stats-section {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  position: relative;
+  z-index: 10;
+}
+
+/* [STAT-CARD] Sharp professional stat card design */
+.stat-card {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1.25rem;
+  background: transparent;
+  border: 1px solid rgba(201, 75, 124, 0.35);
+  border-radius: 6px;
+  cursor: default;
+  position: relative;
+  z-index: 1;
+  contain: layout style;
+  transition: transform 0.2s ease-out, border-color 0.2s ease-out, background 0.2s ease-out;
+  
+  /* [FADE-IN] Smooth entrance animation */
+  opacity: 0;
+  animation: statCardFadeIn 0.5s ease-out forwards;
+}
+
+.stat-card:nth-child(1) { animation-delay: 0ms; }
+.stat-card:nth-child(2) { animation-delay: 80ms; }
+.stat-card:nth-child(3) { animation-delay: 160ms; }
+.stat-card:nth-child(4) { animation-delay: 240ms; }
+
+@keyframes statCardFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.stat-card-elevated {
+  z-index: 50;
+}
+
+/* [CLICKABLE] Clickable stat card for modal trigger */
+.stat-card-clickable {
+  cursor: pointer;
+}
+
+.stat-card-clickable:hover {
+  border-color: rgba(255, 105, 180, 0.5);
+  background: rgba(15, 10, 25, 0.5);
+}
+
+/* [HOVER] Subtle professional hover effect */
+.stat-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255, 105, 180, 0.45);
+  background: rgba(15, 10, 25, 0.5);
+}
+
+/* [STAT-ICON] Sharp icon container */
+.stat-icon {
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 105, 180, 0.12);
+  border: 1px solid rgba(255, 105, 180, 0.25);
+  border-radius: 5px;
+  position: relative;
+  z-index: 1;
+}
+
+.stat-icon svg {
+  width: 16px;
+  height: 16px;
+  color: #ff69b4;
+}
+
+/* [STAT-INFO] Value and label container */
+.stat-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* [STAT-VALUE] Gradient number display with extra bold font */
+.stat-value {
+  font-size: 1.375rem;
+  font-weight: 900;
+  background: linear-gradient(135deg, #ff69b4 0%, #da70d6 50%, #ba55d3 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.2;
+  font-variant-numeric: tabular-nums;
+  min-width: 2ch;
+  letter-spacing: -0.02em;
+  text-shadow: 0 0 20px rgba(255, 105, 180, 0.3);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* [STAT-LABEL] Uppercase label */
+.stat-label {
+  font-size: 0.625rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* ============================================================================
+   STAT RESET BUTTON
+   ============================================================================ */
+
+/* [RESET-BTN] Sharp professional reset button */
+.stat-reset-btn {
+  position: relative;
+  z-index: 2;
+  width: 26px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(201, 75, 124, 0.15);
+  border: 1px solid rgba(201, 75, 124, 0.35);
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 0.5rem;
+  transition: background 0.15s ease-out, border-color 0.15s ease-out;
+}
+
+/* [ICON] Reset button icon */
+.stat-reset-btn svg {
+  width: 12px;
+  height: 12px;
+  color: rgba(255, 179, 217, 0.7);
+  transition: color 0.15s ease-out, transform 0.15s ease-out;
+}
+
+.stat-reset-btn:hover {
+  background: rgba(239, 68, 68, 0.2);
+  border-color: rgba(239, 68, 68, 0.4);
+}
+
+.stat-reset-btn:hover svg {
+  color: #f87171;
+  transform: rotate(-45deg);
+}
+
+/* ============================================================================
+   RESET TOOLTIP - ANIME STYLE
+   ============================================================================ */
+
+.stat-reset-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-left: 0.5rem;
+  z-index: 100;
+}
+
+/* [TOOLTIP] Sharp professional tooltip design */
+.stat-reset-tooltip {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  padding: 8px 14px;
+  background: rgba(12, 8, 20, 0.98);
+  border: 1px solid rgba(201, 75, 124, 0.45);
+  border-radius: 5px;
+  font-size: 11px;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.15s ease-out, transform 0.15s ease-out, visibility 0.15s;
+  z-index: 99999;
+  pointer-events: none;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  color: rgba(255, 179, 217, 0.95);
+}
+
+.stat-reset-tooltip::after {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+  width: 8px;
+  height: 8px;
+  background: rgba(12, 8, 20, 0.98);
+  border-left: 1px solid rgba(201, 75, 124, 0.45);
+  border-top: 1px solid rgba(201, 75, 124, 0.45);
+}
+
+.stat-reset-wrapper:hover .stat-reset-tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* ============================================================================
+   SEARCH FAB - INLINE COMPACT SEARCH
+   ============================================================================ */
+
+.search-fab {
+  position: relative;
+  opacity: 0;
+  animation: searchFabFadeIn 0.4s ease-out 0.35s forwards;
+}
+
+@keyframes searchFabFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* [GLOW] Background glow effect */
+.search-fab-glow {
+  position: absolute;
+  inset: -6px;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(255, 105, 180, 0.12) 0%,
+    transparent 70%
+  );
+  border-radius: 14px;
+  filter: blur(8px);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  pointer-events: none;
+}
+
+.search-fab:hover .search-fab-glow,
+.search-fab-active .search-fab-glow {
+  opacity: 1;
+}
+
+/* [BORDER] Subtle gradient border */
+.search-fab-border {
+  position: absolute;
+  inset: 0;
+  border-radius: 10px;
+  pointer-events: none;
+}
+
+.search-fab-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 10px;
+  padding: 1px;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 105, 180, 0.35) 0%,
+    rgba(255, 179, 217, 0.2) 50%,
+    rgba(201, 75, 124, 0.35) 100%
+  );
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0.7;
+  transition: opacity 0.25s ease;
+}
+
+.search-fab:hover .search-fab-border::before,
+.search-fab-active .search-fab-border::before {
+  opacity: 1;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 105, 180, 0.6) 0%,
+    rgba(255, 179, 217, 0.4) 50%,
+    rgba(201, 75, 124, 0.6) 100%
+  );
+}
+
+/* [INNER] Main content container */
+.search-fab-inner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.375rem 0.625rem;
+  background: linear-gradient(
+    145deg,
+    rgba(18, 10, 28, 0.9) 0%,
+    rgba(12, 6, 20, 0.95) 100%
+  );
+  border-radius: 10px;
+  backdrop-filter: blur(12px);
+  transition: all 0.2s ease-out;
+}
+
+.search-fab:hover .search-fab-inner {
+  background: linear-gradient(
+    145deg,
+    rgba(22, 12, 32, 0.95) 0%,
+    rgba(15, 8, 24, 0.97) 100%
+  );
+}
+
+/* [ICON] Search icon */
+.search-fab-icon {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 105, 180, 0.5);
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.search-fab-icon svg {
+  width: 14px;
+  height: 14px;
+}
+
+.search-fab:hover .search-fab-icon,
+.search-fab-active .search-fab-icon {
+  color: #ff69b4;
+}
+
+/* [INPUT] Search input field */
+.search-fab-input {
+  width: 100px;
+  padding: 0.25rem 0;
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-family: 'Inter', sans-serif;
+  outline: none;
+  transition: width 0.25s ease;
+}
+
+.search-fab-input::placeholder {
+  color: rgba(255, 179, 217, 0.4);
+  font-size: 0.6875rem;
+}
+
+.search-fab:focus-within .search-fab-input,
+.search-fab-active .search-fab-input {
+  width: 140px;
+}
+
+/* [CLEAR] Clear button */
+.search-fab-clear {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  flex-shrink: 0;
+}
+
+.search-fab-clear svg {
+  width: 10px;
+  height: 10px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.search-fab-clear:hover {
+  background: rgba(255, 100, 100, 0.15);
+  border-color: rgba(255, 100, 100, 0.3);
+}
+
+.search-fab-clear:hover svg {
+  color: #ff8a8a;
+}
+
+/* ============================================================================
+   CHAMPIONS SECTION
+   ============================================================================ */
+
+.champions-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  opacity: 0;
+  animation: sectionFadeIn 0.4s ease-out 0.3s forwards;
+}
+
+@keyframes sectionFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.section-title {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  background: linear-gradient(
+    135deg,
+    #ffffff 0%,
+    #e8e8e8 30%,
+    #d0d0d0 60%,
+    #b8b8b8 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0;
+  letter-spacing: 0.04em;
+  text-transform: capitalize;
+  position: relative;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg,
+    rgba(255, 105, 180, 0.7) 0%,
+    rgba(255, 179, 217, 0.5) 50%,
+    transparent 100%
+  );
+  border-radius: 1px;
+}
+
+.section-count {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.35rem 0.75rem;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 105, 180, 0.12) 0%,
+    rgba(201, 75, 124, 0.08) 100%
+  );
+  border-radius: 20px;
+  margin-left: auto;
+  overflow: hidden;
+}
+
+/* [COUNT-BORDER] Sakura gradient border */
+.section-count::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  padding: 1px;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 105, 180, 0.5) 0%,
+    rgba(255, 179, 217, 0.3) 50%,
+    rgba(201, 75, 124, 0.5) 100%
+  );
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* [COUNT-TEXT] Gradient text styling */
+.section-count {
+  font-size: 0.75rem;
+  font-weight: 600;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 179, 217, 0.95) 0%,
+    rgba(255, 105, 180, 0.9) 50%,
+    rgba(255, 179, 217, 0.95) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: 0.03em;
+}
+
+/* ============================================================================
+   CHAMPIONS GRID
+   ============================================================================ */
+
+.champions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1rem;
+}
+
+/* [EMPTY-STATE] Sharp professional empty state */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  gap: 1rem;
+}
+
+.empty-icon {
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(201, 75, 124, 0.1);
+  border: 1px solid rgba(201, 75, 124, 0.25);
+  border-radius: 6px;
+}
+
+.empty-icon svg {
+  width: 24px;
+  height: 24px;
+  color: rgba(255, 105, 180, 0.5);
+}
+
+.empty-text {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0;
+}
+
+.empty-hint {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.4);
+  margin: 0;
+}
+
+/* [LOADING-STATE] Sharp professional loading state */
+.loading-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  gap: 1.25rem;
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 2px solid rgba(201, 75, 124, 0.2);
+  border-top-color: #ff69b4;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.loading-text {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.5);
+  margin: 0;
+}
+
+/* [PROGRESS-BAR] Sharp loading progress indicator */
+.loading-progress {
+  width: 180px;
+  height: 3px;
+  background: rgba(201, 75, 124, 0.15);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.loading-progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #ff69b4 0%, #da70d6 50%, #ba55d3 100%);
+  border-radius: 2px;
+  transition: width 0.3s ease-out;
+}
+
+/* ============================================================================
+   CHAMPIONS GRID
+   ============================================================================ */
+
+.champions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1rem;
+}

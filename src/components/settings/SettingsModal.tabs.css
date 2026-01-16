@@ -1,0 +1,230 @@
+/**
+ * File: SettingsModal.tabs.css
+ * Author: Wildflover
+ * Description: Tab content styles - language, options, game path
+ * Language: CSS
+ */
+
+/* [SECTION-HEADER-ROW] Header with refresh button */
+.section-header-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.section-header-text { flex: 1; }
+.section-header-text .section-title { margin-bottom: 4px; }
+.section-header-text .section-desc { margin-bottom: 0; }
+
+.refresh-cache-btn {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(201, 75, 124, 0.15);
+  border: 1px solid rgba(201, 75, 124, 0.3);
+  border-radius: 6px;
+  color: rgba(255, 179, 217, 0.9);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  flex-shrink: 0;
+}
+
+.refresh-cache-btn:hover {
+  background: rgba(201, 75, 124, 0.25);
+  border-color: rgba(201, 75, 124, 0.5);
+  color: #fff;
+}
+
+.refresh-cache-btn.loading svg { animation: refreshSpin 0.8s linear infinite; }
+@keyframes refreshSpin { to { transform: rotate(360deg); } }
+.refresh-cache-btn svg { width: 14px; height: 14px; }
+
+/* [LANGUAGE] Language selection grid */
+.language-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+
+.language-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(201, 75, 124, 0.2);
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.15s ease;
+}
+
+.language-option:hover {
+  background: rgba(201, 75, 124, 0.08);
+  border-color: rgba(201, 75, 124, 0.4);
+}
+
+.language-option.selected {
+  background: rgba(201, 75, 124, 0.12);
+  border-color: rgba(201, 75, 124, 0.5);
+}
+
+.lang-flag { font-size: 11px; font-weight: 700; color: #c94b7c; min-width: 24px; }
+.lang-info { display: flex; flex-direction: column; gap: 2px; flex: 1; }
+.lang-native { font-size: 12px; font-weight: 600; color: #fff; }
+.lang-name { font-size: 9px; color: rgba(255, 255, 255, 0.35); }
+
+.lang-check {
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #c94b7c 0%, #8b3a62 100%);
+  border-radius: 50%;
+  animation: langCheckPopIn 0.2s ease-out;
+}
+
+@keyframes langCheckPopIn { from { transform: scale(0); } to { transform: scale(1); } }
+.lang-check svg { width: 10px; height: 10px; color: #fff; }
+
+/* [OPTIONS] Settings options list */
+.settings-options { display: flex; flex-direction: column; gap: 8px; }
+
+.option-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(201, 75, 124, 0.2);
+  border-radius: 8px;
+  transition: all 0.15s ease;
+}
+
+.option-item:hover {
+  background: rgba(201, 75, 124, 0.08);
+  border-color: rgba(201, 75, 124, 0.4);
+}
+
+.option-info { display: flex; flex-direction: column; gap: 2px; }
+.option-label { font-size: 12px; font-weight: 500; color: #fff; }
+.option-desc { font-size: 9px; color: rgba(255, 255, 255, 0.35); }
+
+/* [TOGGLE] Toggle switch */
+.toggle-switch { position: relative; width: 42px; height: 22px; cursor: pointer; }
+.toggle-switch input { opacity: 0; width: 0; height: 0; }
+
+.toggle-slider {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 11px;
+  transition: all 0.2s ease;
+}
+
+.toggle-slider::before {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 16px;
+  height: 16px;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 50%;
+  transition: transform 0.2s ease;
+}
+
+.toggle-switch input:checked + .toggle-slider {
+  background: linear-gradient(135deg, #c94b7c 0%, #8b3a62 100%);
+  border-color: rgba(201, 75, 124, 0.5);
+}
+
+.toggle-switch input:checked + .toggle-slider::before {
+  transform: translateX(20px);
+  background: #fff;
+}
+
+/* [GAME-PATH] Game path selection */
+.game-path-item { flex-direction: column; align-items: stretch; gap: 10px; }
+.game-path-item .option-info { width: 100%; }
+.game-path-controls { display: flex; align-items: center; gap: 10px; width: 100%; }
+.game-path-loading { display: flex; align-items: center; justify-content: center; padding: 8px; }
+
+.path-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(201, 75, 124, 0.2);
+  border-top-color: #c94b7c;
+  border-radius: 50%;
+  animation: pathSpin 0.8s linear infinite;
+}
+
+@keyframes pathSpin { to { transform: rotate(360deg); } }
+
+.game-path-display {
+  flex: 1;
+  min-width: 0;
+  padding: 8px 10px;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(201, 75, 124, 0.15);
+  border-radius: 6px;
+}
+
+.path-value {
+  font-family: 'JetBrains Mono', 'Consolas', monospace;
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.7);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+}
+
+.path-not-found { font-size: 10px; color: rgba(255, 100, 100, 0.7); font-style: italic; }
+.game-path-actions { display: flex; gap: 6px; flex-shrink: 0; }
+
+.path-action-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  background: rgba(201, 75, 124, 0.15);
+  border: 1px solid rgba(201, 75, 124, 0.3);
+  border-radius: 6px;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 10px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.path-action-btn svg { width: 12px; height: 12px; color: #c94b7c; }
+.path-action-btn:hover { background: rgba(201, 75, 124, 0.25); border-color: rgba(201, 75, 124, 0.5); color: #fff; }
+.path-action-btn.clear-btn { padding: 6px; }
+.path-action-btn.clear-btn span { display: none; }
+
+.game-path-error, .game-path-success {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  margin-top: 4px;
+  animation: pathMsgFadeIn 0.2s ease-out;
+}
+
+@keyframes pathMsgFadeIn { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: translateY(0); } }
+
+.game-path-error { background: rgba(255, 80, 80, 0.1); border: 1px solid rgba(255, 80, 80, 0.25); }
+.game-path-error svg { width: 12px; height: 12px; color: #ff6b6b; flex-shrink: 0; }
+.game-path-error span { font-size: 10px; color: rgba(255, 100, 100, 0.9); }
+
+.game-path-success { background: rgba(0, 200, 100, 0.1); border: 1px solid rgba(0, 200, 100, 0.25); }
+.game-path-success svg { width: 12px; height: 12px; color: #00c864; flex-shrink: 0; }
+.game-path-success span { font-size: 10px; color: rgba(0, 200, 100, 0.9); }

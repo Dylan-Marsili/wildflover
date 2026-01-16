@@ -1,0 +1,1443 @@
+/**
+ * File: MarketplaceScreen.css
+ * Author: Wildflover
+ * Description: Marketplace screen styles - minimal integrated design
+ * Language: CSS
+ */
+
+/* [SCREEN] Main container */
+.marketplace-screen {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* [BACKGROUND] Anime themed background */
+.marketplace-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.marketplace-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.85;
+}
+
+.marketplace-bg-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(10, 8, 20, 0.5) 0%,
+    rgba(15, 12, 25, 0.55) 100%
+  );
+}
+
+/* [HEADER] Modern marketplace header */
+.marketplace-header {
+  position: relative;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 20px;
+}
+
+/* [RESPONSIVE] Larger header on big screens */
+@media (min-width: 1600px) {
+  .marketplace-header {
+    padding: 18px 24px;
+    gap: 20px;
+  }
+}
+
+@media (min-width: 1920px) {
+  .marketplace-header {
+    padding: 20px 28px;
+    gap: 24px;
+  }
+}
+
+.marketplace-header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.marketplace-title-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.marketplace-title-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.marketplace-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.95);
+  margin: 0;
+  letter-spacing: -0.3px;
+  background: linear-gradient(135deg, #ffffff 0%, #ffb3d9 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  padding-right: 12px;
+  border-right: 1px solid rgba(201, 75, 124, 0.25);
+}
+
+/* [SUBTITLE] Page description */
+.marketplace-subtitle {
+  font-size: 10px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.4);
+  letter-spacing: 0.02em;
+}
+
+/* [RESPONSIVE] Larger title on big screens */
+@media (min-width: 1600px) {
+  .marketplace-title {
+    font-size: 22px;
+    padding-right: 14px;
+  }
+}
+
+@media (min-width: 1920px) {
+  .marketplace-title {
+    font-size: 24px;
+    padding-right: 16px;
+  }
+}
+
+.marketplace-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 60px;
+  height: 26px;
+  padding: 0 12px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #c94b7c;
+  background: rgba(201, 75, 124, 0.15);
+  border: 1px solid rgba(201, 75, 124, 0.4);
+  border-radius: 4px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+/* [SEARCH] Compact search input */
+.marketplace-search {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.marketplace-search svg {
+  position: absolute;
+  left: 10px;
+  width: 14px;
+  height: 14px;
+  color: rgba(201, 75, 124, 0.5);
+  pointer-events: none;
+  transition: color 0.2s ease;
+}
+
+.marketplace-search input {
+  width: 160px;
+  background: rgba(201, 75, 124, 0.06);
+  border: 1px solid rgba(201, 75, 124, 0.15);
+  border-radius: 8px;
+  padding: 7px 30px 7px 32px;
+  font-size: 11px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.9);
+  transition: all 0.2s ease;
+}
+
+.marketplace-search input:focus {
+  outline: none;
+  width: 200px;
+  border-color: rgba(201, 75, 124, 0.4);
+  background: rgba(201, 75, 124, 0.1);
+}
+
+.marketplace-search:focus-within svg {
+  color: rgba(201, 75, 124, 0.8);
+}
+
+.marketplace-search input::placeholder {
+  color: rgba(255, 255, 255, 0.3);
+  font-weight: 400;
+}
+
+.marketplace-search .search-clear {
+  position: absolute;
+  right: 6px;
+  width: 20px;
+  height: 20px;
+  border: none;
+  background: rgba(201, 75, 124, 0.15);
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease;
+}
+
+.marketplace-search .search-clear:hover {
+  background: rgba(201, 75, 124, 0.3);
+}
+
+.marketplace-search .search-clear svg {
+  position: static;
+  width: 10px;
+  height: 10px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* [ACTIONS] Compact right side actions */
+.marketplace-header-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+}
+
+/* [SORT-DROPDOWN] Sharp professional dropdown */
+.sort-dropdown {
+  position: relative;
+}
+
+.sort-dropdown-trigger {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  background: rgba(201, 75, 124, 0.1);
+  border: 1px solid rgba(201, 75, 124, 0.3);
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(255, 220, 240, 0.9);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.sort-dropdown-trigger:hover {
+  background: rgba(201, 75, 124, 0.18);
+  border-color: rgba(201, 75, 124, 0.5);
+}
+
+.sort-dropdown-trigger.open {
+  background: rgba(201, 75, 124, 0.22);
+  border-color: rgba(201, 75, 124, 0.6);
+}
+
+.sort-dropdown-trigger svg {
+  width: 14px;
+  height: 14px;
+  color: rgba(255, 179, 217, 0.8);
+  transition: transform 0.2s ease;
+}
+
+.sort-dropdown-trigger.open svg {
+  transform: rotate(180deg);
+}
+
+.sort-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  min-width: 160px;
+  background: rgba(12, 8, 20, 0.98);
+  border: 1px solid rgba(201, 75, 124, 0.3);
+  border-radius: 6px;
+  padding: 4px;
+  z-index: 1000;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  animation: dropdownFadeIn 0.15s ease;
+}
+
+@keyframes dropdownFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.sort-dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 9px 12px;
+  background: transparent;
+  border: none;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.65);
+  cursor: pointer;
+  transition: all 0.12s ease;
+  text-align: left;
+}
+
+.sort-dropdown-item:hover {
+  background: rgba(201, 75, 124, 0.15);
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.sort-dropdown-item.active {
+  background: rgba(201, 75, 124, 0.2);
+  color: rgba(255, 220, 240, 0.98);
+}
+
+.sort-dropdown-item svg {
+  width: 16px;
+  height: 16px;
+  opacity: 0.6;
+  transition: all 0.12s ease;
+}
+
+.sort-dropdown-item:hover svg {
+  opacity: 1;
+  color: rgba(255, 179, 217, 0.9);
+}
+
+.sort-dropdown-item.active svg {
+  color: rgba(255, 179, 217, 0.95);
+  opacity: 1;
+}
+
+/* [REFRESH-BTN] Sharp professional refresh button */
+.marketplace-refresh-wrapper {
+  position: relative;
+  display: inline-flex;
+}
+
+.marketplace-refresh {
+  width: 36px;
+  height: 36px;
+  background: rgba(201, 75, 124, 0.1);
+  border: 1px solid rgba(201, 75, 124, 0.3);
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease;
+}
+
+.marketplace-refresh:hover {
+  background: rgba(201, 75, 124, 0.18);
+  border-color: rgba(201, 75, 124, 0.5);
+}
+
+.marketplace-refresh:active {
+  transform: scale(0.96);
+}
+
+.marketplace-refresh svg {
+  width: 14px;
+  height: 14px;
+  color: rgba(255, 179, 217, 0.8);
+  transition: color 0.15s ease;
+}
+
+.marketplace-refresh:hover svg {
+  color: rgba(255, 220, 240, 0.95);
+}
+
+/* [REFRESH-TOOLTIP] Professional tooltip for refresh button */
+.marketplace-refresh-tooltip {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  padding: 0.5rem 0.875rem;
+  background: rgba(12, 10, 18, 0.95);
+  border: 1px solid rgba(201, 75, 124, 0.3);
+  border-radius: 8px;
+  backdrop-filter: blur(12px);
+  box-shadow: 
+    0 4px 16px rgba(0, 0, 0, 0.4),
+    0 0 20px rgba(201, 75, 124, 0.1);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s ease-out;
+  z-index: 9999;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.marketplace-refresh-tooltip span {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  background: linear-gradient(135deg, #ffb3d9 0%, #c94b7c 50%, #ff69b4 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.marketplace-refresh-tooltip::before {
+  content: '';
+  position: absolute;
+  top: -6px;
+  left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+  width: 10px;
+  height: 10px;
+  background: rgba(12, 10, 18, 0.95);
+  border-left: 1px solid rgba(201, 75, 124, 0.3);
+  border-top: 1px solid rgba(201, 75, 124, 0.3);
+}
+
+.marketplace-refresh-wrapper:hover .marketplace-refresh-tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* [HISTORY-BTN] Sharp professional history button */
+.marketplace-history-btn {
+  width: 36px;
+  height: 36px;
+  background: rgba(201, 75, 124, 0.1);
+  border: 1px solid rgba(201, 75, 124, 0.3);
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease;
+}
+
+.marketplace-history-btn:hover {
+  background: rgba(201, 75, 124, 0.18);
+  border-color: rgba(201, 75, 124, 0.5);
+}
+
+.marketplace-history-btn:active {
+  transform: scale(0.96);
+}
+
+.marketplace-history-btn svg {
+  width: 14px;
+  height: 14px;
+  color: rgba(255, 179, 217, 0.8);
+  transition: color 0.15s ease;
+}
+
+.marketplace-history-btn:hover svg {
+  color: rgba(255, 220, 240, 0.95);
+}
+
+/* [HISTORY-TOOLTIP] Professional tooltip for history button */
+.marketplace-history-wrapper {
+  position: relative;
+  display: inline-flex;
+}
+
+.marketplace-history-tooltip {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  padding: 0.5rem 0.875rem;
+  background: rgba(12, 10, 18, 0.95);
+  border: 1px solid rgba(201, 75, 124, 0.3);
+  border-radius: 8px;
+  backdrop-filter: blur(12px);
+  box-shadow: 
+    0 4px 16px rgba(0, 0, 0, 0.4),
+    0 0 20px rgba(201, 75, 124, 0.1);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s ease-out;
+  z-index: 9999;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.marketplace-history-tooltip span {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  background: linear-gradient(135deg, #ffb3d9 0%, #c94b7c 50%, #ff69b4 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.marketplace-history-tooltip::before {
+  content: '';
+  position: absolute;
+  top: -6px;
+  left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+  width: 10px;
+  height: 10px;
+  background: rgba(12, 10, 18, 0.95);
+  border-left: 1px solid rgba(201, 75, 124, 0.3);
+  border-top: 1px solid rgba(201, 75, 124, 0.3);
+}
+
+.marketplace-history-wrapper:hover .marketplace-history-tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* [UPLOAD-BTN] Sharp professional upload button */
+.marketplace-upload-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  background: rgba(201, 75, 124, 0.1);
+  border: 1px solid rgba(201, 75, 124, 0.3);
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(255, 220, 240, 0.9);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.marketplace-upload-btn:hover {
+  background: rgba(201, 75, 124, 0.18);
+  border-color: rgba(201, 75, 124, 0.5);
+}
+
+.marketplace-upload-btn:active {
+  transform: scale(0.96);
+}
+
+.marketplace-upload-btn svg {
+  width: 14px;
+  height: 14px;
+  color: rgba(255, 179, 217, 0.8);
+  transition: color 0.15s ease;
+}
+
+.marketplace-upload-btn:hover svg {
+  color: rgba(255, 220, 240, 0.95);
+}
+
+/* [FILTERS-ROW] Search and filters container */
+.marketplace-filters-row {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 20px 14px;
+  border-bottom: 1px solid rgba(201, 75, 124, 0.12);
+  margin-bottom: 4px;
+}
+
+/* [FILTERS] Modern anime-styled filter chips */
+.marketplace-filters {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  overflow-x: auto;
+  flex: 1;
+}
+
+.marketplace-filters::-webkit-scrollbar {
+  display: none;
+}
+
+.filter-chip {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: transparent;
+  border: 1px solid rgba(201, 75, 124, 0.25);
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  letter-spacing: 0.3px;
+}
+
+.filter-chip:hover {
+  border-color: rgba(201, 75, 124, 0.45);
+  color: rgba(255, 255, 255, 0.9);
+  background: rgba(201, 75, 124, 0.08);
+}
+
+.filter-chip.active {
+  background: rgba(201, 75, 124, 0.18);
+  border-color: rgba(201, 75, 124, 0.5);
+  color: rgba(255, 220, 240, 0.95);
+}
+
+.filter-count {
+  font-size: 9px;
+  font-weight: 700;
+  background: rgba(201, 75, 124, 0.15);
+  color: rgba(255, 179, 217, 0.8);
+  padding: 2px 6px;
+  border-radius: 4px;
+  min-width: 18px;
+  text-align: center;
+}
+
+.filter-chip.active .filter-count {
+  background: rgba(255, 255, 255, 0.12);
+  color: rgba(255, 220, 240, 0.95);
+}
+
+.filter-clear {
+  flex-shrink: 0;
+  padding: 6px 12px;
+  background: transparent;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  color: rgba(239, 68, 68, 0.7);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  letter-spacing: 0.3px;
+}
+
+.filter-clear:hover {
+  background: rgba(239, 68, 68, 0.12);
+  border-color: rgba(239, 68, 68, 0.5);
+  color: rgba(239, 68, 68, 0.95);
+}
+
+/* [CONTENT] Main content area - with space for fixed pagination */
+.marketplace-content {
+  position: relative;
+  z-index: 10;
+  flex: 1;
+  overflow-y: auto;
+  padding: 6px 20px 80px;
+}
+
+/* [RESPONSIVE] Larger padding on big screens */
+@media (min-width: 1600px) {
+  .marketplace-content {
+    padding: 8px 24px 90px;
+  }
+}
+
+@media (min-width: 1920px) {
+  .marketplace-content {
+    padding: 10px 28px 100px;
+  }
+}
+
+@media (min-width: 2560px) {
+  .marketplace-content {
+    padding: 12px 32px 110px;
+  }
+}
+
+/* [GRID] Mod cards grid - Responsive layout for all screen sizes */
+.marketplace-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 14px;
+  align-items: stretch;
+}
+
+.marketplace-grid > * {
+  min-height: 0;
+}
+
+/* [RESPONSIVE] Large screens - bigger cards */
+@media (min-width: 1600px) {
+  .marketplace-grid {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 18px;
+  }
+}
+
+/* [RESPONSIVE] Extra large / Fullscreen - more columns */
+@media (min-width: 1920px) {
+  .marketplace-grid {
+    grid-template-columns: repeat(6, 1fr);
+    gap: 20px;
+  }
+}
+
+/* [RESPONSIVE] Ultra-wide screens */
+@media (min-width: 2560px) {
+  .marketplace-grid {
+    grid-template-columns: repeat(7, 1fr);
+    gap: 24px;
+  }
+}
+
+/* [LOADING] Loading state */
+.marketplace-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  gap: 12px;
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 12px;
+}
+
+.marketplace-loading-spinner {
+  width: 32px;
+  height: 32px;
+  border: 2px solid rgba(201, 75, 124, 0.12);
+  border-top-color: rgba(201, 75, 124, 0.6);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* [EMPTY] Empty state */
+.marketplace-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 240px;
+  gap: 12px;
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 12px;
+}
+
+.marketplace-empty svg {
+  width: 40px;
+  height: 40px;
+  opacity: 0.35;
+  color: rgba(201, 75, 124, 0.45);
+}
+
+/* [ERROR] Error state */
+.marketplace-error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 240px;
+  gap: 12px;
+  color: rgba(239, 68, 68, 0.7);
+  font-size: 12px;
+}
+
+.marketplace-error svg {
+  width: 40px;
+  height: 40px;
+}
+
+.marketplace-error button {
+  padding: 6px 14px;
+  background: rgba(239, 68, 68, 0.12);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  border-radius: 5px;
+  font-size: 11px;
+  font-weight: 500;
+  color: rgba(239, 68, 68, 0.8);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.marketplace-error button:hover {
+  background: rgba(239, 68, 68, 0.2);
+}
+
+/* [SCROLLBAR] Custom scrollbar */
+.marketplace-content::-webkit-scrollbar {
+  width: 4px;
+}
+
+.marketplace-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.marketplace-content::-webkit-scrollbar-thumb {
+  background: rgba(201, 75, 124, 0.25);
+  border-radius: 2px;
+}
+
+.marketplace-content::-webkit-scrollbar-thumb:hover {
+  background: rgba(201, 75, 124, 0.4);
+}
+
+
+/* [FILTER-MORE] More button style */
+.filter-chip.filter-more {
+  background: linear-gradient(135deg, rgba(201, 75, 124, 0.15), rgba(168, 61, 104, 0.1));
+  border-color: rgba(201, 75, 124, 0.35);
+  color: rgba(255, 179, 217, 0.9);
+}
+
+.filter-chip.filter-more:hover {
+  background: linear-gradient(135deg, rgba(201, 75, 124, 0.25), rgba(168, 61, 104, 0.15));
+  border-color: rgba(201, 75, 124, 0.5);
+}
+
+/* [TITLE-MODAL] Professional title filter modal with search */
+.title-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.88);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: titleModalFadeIn 0.2s ease-out;
+  padding: 20px;
+}
+
+@keyframes titleModalFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.title-modal {
+  width: 100%;
+  max-width: 560px;
+  max-height: 78vh;
+  background: rgba(12, 8, 20, 0.98);
+  border: 1px solid rgba(201, 75, 124, 0.35);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: titleModalSlideIn 0.2s ease-out;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+@keyframes titleModalSlideIn {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* [HEADER] Modal header - Enhanced with pink gradient */
+.title-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  background: rgba(0, 0, 0, 0.25);
+  border-top: 1px solid rgba(255, 105, 180, 0.25);
+  border-bottom: 1px solid rgba(201, 75, 124, 0.25);
+}
+
+.title-modal-header-left {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+/* [ICON] Header icon with gradient glow */
+.title-modal-icon {
+  width: 18px;
+  height: 18px;
+  stroke: #ff69b4;
+  flex-shrink: 0;
+  margin-top: 2px;
+  filter: drop-shadow(0 0 4px rgba(255, 105, 180, 0.4));
+}
+
+.title-modal-header-text {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.title-modal-title-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.title-modal-header h3 {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 700;
+  background: linear-gradient(135deg, #ff69b4 0%, #da70d6 50%, #ba55d3 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* [BADGE] Category count badge */
+.title-modal-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 12px;
+  background: rgba(255, 105, 180, 0.12);
+  border: 1px solid rgba(255, 105, 180, 0.35);
+  border-radius: 5px;
+  font-size: 10px;
+  font-weight: 600;
+  color: #ff69b4;
+}
+
+.title-modal-subtitle {
+  font-size: 10px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.4);
+  margin: 0;
+  letter-spacing: 0.02em;
+}
+
+/* [ACTIONS] Header action buttons */
+.title-modal-actions {
+  display: flex;
+  gap: 6px;
+}
+
+.title-modal-help,
+.title-modal-close {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(201, 75, 124, 0.15);
+  border: 1px solid rgba(201, 75, 124, 0.3);
+  border-radius: 6px;
+  color: rgba(255, 179, 217, 0.9);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  position: relative;
+  overflow: visible;
+}
+
+.title-modal-help:hover {
+  background: rgba(201, 75, 124, 0.3);
+  color: #fff;
+}
+
+.title-modal-close:hover {
+  background: rgba(239, 68, 68, 0.25);
+  border-color: rgba(239, 68, 68, 0.4);
+  color: #f87171;
+}
+
+.title-modal-help svg,
+.title-modal-close svg {
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+  overflow: visible;
+}
+
+/* [HELP-TOOLTIP] Hover tooltip for help button */
+.title-help-tooltip {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: -10px;
+  width: 260px;
+  padding: 12px;
+  background: rgba(12, 8, 20, 0.98);
+  border: 1px solid rgba(201, 75, 124, 0.4);
+  border-radius: 8px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6);
+  z-index: 10;
+  cursor: default;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+}
+
+.title-modal-help:hover .title-help-tooltip {
+  opacity: 1;
+  visibility: visible;
+}
+
+.title-help-tooltip::before {
+  content: '';
+  position: absolute;
+  top: -6px;
+  right: 16px;
+  width: 10px;
+  height: 10px;
+  background: rgba(12, 8, 20, 0.98);
+  border-left: 1px solid rgba(201, 75, 124, 0.4);
+  border-top: 1px solid rgba(201, 75, 124, 0.4);
+  transform: rotate(45deg);
+}
+
+.title-help-title {
+  font-size: 11px;
+  font-weight: 700;
+  color: rgba(255, 179, 217, 1);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 6px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid rgba(201, 75, 124, 0.2);
+  text-align: center;
+}
+
+.title-help-content {
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.45);
+  line-height: 1.3;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.title-help-section {
+  margin-bottom: 8px;
+}
+
+.title-help-section:last-child {
+  margin-bottom: 0;
+}
+
+.title-help-section-title {
+  font-size: 9px;
+  font-weight: 700;
+  color: rgba(255, 179, 217, 0.6);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 5px;
+  padding-left: 4px;
+}
+
+.title-help-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+  padding: 4px 6px;
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 3px;
+}
+
+.title-help-item:last-child {
+  margin-bottom: 0;
+}
+
+.title-help-label {
+  font-size: 10px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.8);
+  min-width: 50px;
+}
+
+.title-help-desc {
+  font-size: 9px;
+  color: rgba(255, 255, 255, 0.4);
+  line-height: 1.2;
+}
+
+/* [SEARCH] Search input section */
+.title-modal-search {
+  padding: 10px 14px;
+  background: rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid rgba(201, 75, 124, 0.15);
+}
+
+.title-modal-search {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 0;
+  padding: 10px 14px;
+  background: rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid rgba(201, 75, 124, 0.15);
+}
+
+.title-modal-search svg {
+  position: absolute;
+  left: 26px;
+  width: 14px;
+  height: 14px;
+  color: rgba(255, 179, 217, 0.4);
+  pointer-events: none;
+}
+
+.title-modal-search input {
+  width: 100%;
+  padding: 10px 36px 10px 36px;
+  background: rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(201, 75, 124, 0.2);
+  border-radius: 6px;
+  color: rgba(255, 255, 255, 0.95);
+  font-size: 12px;
+  font-family: inherit;
+  outline: none;
+  transition: all 0.15s ease;
+}
+
+.title-modal-search input::placeholder {
+  color: rgba(255, 255, 255, 0.25);
+}
+
+.title-modal-search input:focus {
+  border-color: rgba(201, 75, 124, 0.5);
+  box-shadow: 0 0 0 2px rgba(201, 75, 124, 0.1);
+}
+
+.title-search-clear {
+  position: absolute;
+  right: 22px;
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.05);
+  border: none;
+  border-radius: 4px;
+  color: rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.title-search-clear:hover {
+  background: rgba(201, 75, 124, 0.2);
+  color: rgba(255, 179, 217, 0.9);
+}
+
+.title-search-clear svg {
+  position: static;
+  width: 11px;
+  height: 11px;
+  color: inherit;
+}
+
+/* [STATS] Quick statistics */
+.title-modal-stats {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 10px 14px;
+  margin: 0;
+  background: rgba(0, 0, 0, 0.15);
+  border-bottom: 1px solid rgba(201, 75, 124, 0.12);
+}
+
+.title-stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.15rem;
+}
+
+.title-stat-value {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #ff69b4;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.title-stat-label {
+  font-size: 0.6rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.4);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.title-stat-divider {
+  width: 1px;
+  height: 24px;
+  background: rgba(201, 75, 124, 0.25);
+}
+
+/* [CONTENT] Items grid */
+.title-modal-content {
+  padding: 14px 18px 18px;
+  overflow-y: auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  flex: 1;
+}
+
+.title-modal-content::-webkit-scrollbar {
+  width: 4px;
+}
+
+.title-modal-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.title-modal-content::-webkit-scrollbar-thumb {
+  background: rgba(201, 75, 124, 0.25);
+  border-radius: 2px;
+}
+
+.title-modal-content::-webkit-scrollbar-thumb:hover {
+  background: rgba(201, 75, 124, 0.4);
+}
+
+/* [ITEM] Title item button */
+.title-modal-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 12px;
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(201, 75, 124, 0.15);
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  text-align: left;
+}
+
+.title-modal-item:hover {
+  background: rgba(201, 75, 124, 0.15);
+  border-color: rgba(201, 75, 124, 0.35);
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.title-modal-item.active {
+  background: rgba(255, 105, 180, 0.2);
+  border-color: rgba(255, 105, 180, 0.5);
+  color: #ff69b4;
+}
+
+/* [ALL-ITEM] Full width for "All" option */
+.title-modal-item.all-item {
+  grid-column: 1 / -1;
+  background: rgba(201, 75, 124, 0.1);
+  border-color: rgba(201, 75, 124, 0.25);
+  padding: 12px 14px;
+}
+
+.title-modal-item.all-item:hover {
+  background: rgba(201, 75, 124, 0.2);
+  border-color: rgba(201, 75, 124, 0.4);
+}
+
+.title-item-content {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  min-width: 0;
+}
+
+.title-item-content svg {
+  width: 14px;
+  height: 14px;
+  color: rgba(255, 179, 217, 0.6);
+  flex-shrink: 0;
+}
+
+.title-item-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.title-modal-count {
+  font-size: 10px;
+  font-weight: 700;
+  color: rgba(255, 179, 217, 0.7);
+  background: rgba(201, 75, 124, 0.15);
+  padding: 3px 8px;
+  border-radius: 4px;
+  min-width: 24px;
+  text-align: center;
+  flex-shrink: 0;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.title-modal-item.active .title-modal-count {
+  background: rgba(255, 255, 255, 0.15);
+  color: #ff69b4;
+}
+
+/* [EMPTY] No results state */
+.title-modal-empty {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 24px;
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.title-modal-empty svg {
+  width: 28px;
+  height: 28px;
+  opacity: 0.5;
+  color: rgba(201, 75, 124, 0.5);
+}
+
+.title-modal-empty span {
+  font-size: 11px;
+}
+
+
+/* [PAGINATION] Fixed bottom pagination controls */
+.marketplace-pagination {
+  position: fixed;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 16px;
+  background: rgba(12, 10, 20, 0.92);
+  border: 1px solid rgba(201, 75, 124, 0.25);
+  border-radius: 12px;
+  backdrop-filter: blur(12px);
+  z-index: 100;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* [RESPONSIVE] Larger pagination on big screens */
+@media (min-width: 1600px) {
+  .marketplace-pagination {
+    gap: 10px;
+    padding: 12px 20px;
+    bottom: 18px;
+  }
+}
+
+@media (min-width: 1920px) {
+  .marketplace-pagination {
+    gap: 12px;
+    padding: 14px 24px;
+    bottom: 20px;
+    border-radius: 14px;
+  }
+}
+
+.pagination-btn {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(201, 75, 124, 0.08);
+  border: 1px solid rgba(201, 75, 124, 0.15);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+/* [RESPONSIVE] Larger pagination buttons on big screens */
+@media (min-width: 1920px) {
+  .pagination-btn {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+.pagination-btn:hover:not(:disabled) {
+  background: rgba(201, 75, 124, 0.2);
+  border-color: rgba(201, 75, 124, 0.35);
+  transform: translateY(-1px);
+}
+
+.pagination-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.pagination-btn svg {
+  width: 14px;
+  height: 14px;
+  color: rgba(255, 179, 217, 0.75);
+}
+
+.pagination-pages {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.pagination-page {
+  min-width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(201, 75, 124, 0.1);
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+/* [RESPONSIVE] Larger page buttons on big screens */
+@media (min-width: 1920px) {
+  .pagination-page {
+    min-width: 36px;
+    height: 36px;
+    font-size: 13px;
+  }
+}
+
+.pagination-page:hover {
+  background: rgba(201, 75, 124, 0.12);
+  border-color: rgba(201, 75, 124, 0.25);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.pagination-page.active {
+  background: linear-gradient(135deg, rgba(201, 75, 124, 0.45), rgba(168, 61, 104, 0.35));
+  border-color: rgba(201, 75, 124, 0.5);
+  color: #fff;
+  box-shadow: 0 0 12px rgba(201, 75, 124, 0.25);
+}
+
+.pagination-ellipsis {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.35);
+  padding: 0 4px;
+  user-select: none;
+}
+
+.pagination-info {
+  font-size: 11px;
+  font-weight: 600;
+  color: rgba(201, 75, 124, 0.6);
+  margin-left: 8px;
+  padding: 5px 12px;
+  background: rgba(201, 75, 124, 0.08);
+  border-radius: 8px;
+}

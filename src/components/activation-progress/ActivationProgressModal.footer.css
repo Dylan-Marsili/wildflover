@@ -1,0 +1,56 @@
+/**
+ * File: ActivationProgressModal.footer.css
+ * Author: Wildflover
+ * Description: Footer styles - status messages, success/error states, processing animation
+ * Language: CSS
+ */
+
+/* [FOOTER] Status footer */
+.activation-footer {
+  padding: 12px 14px;
+  background: rgba(0, 0, 0, 0.25);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.activation-success,
+.activation-error,
+.activation-processing {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.activation-success svg,
+.activation-error svg {
+  width: 16px;
+  height: 16px;
+}
+
+.activation-success { color: #00ff88; }
+.activation-error { color: #f87171; }
+.activation-processing { color: rgba(255, 255, 255, 0.5); }
+
+/* [DOTS] Processing dots animation */
+.processing-dots {
+  display: flex;
+  gap: 3px;
+}
+
+.processing-dots span {
+  width: 5px;
+  height: 5px;
+  background: rgba(255, 180, 50, 0.7);
+  border-radius: 50%;
+  animation: processingDot 1.2s ease-in-out infinite;
+}
+
+.processing-dots span:nth-child(2) { animation-delay: 0.2s; }
+.processing-dots span:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes processingDot {
+  0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; }
+  40% { transform: scale(1); opacity: 1; }
+}
