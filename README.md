@@ -296,5 +296,6 @@ Wildflover is not endorsed by Riot Games and does not reflect the views or opini
 </p>
 
 <p align="center">
-  Made with ♥ by <a href="https://github.com/wildflover">Wildflover</a>
+  Made with ♥ by <a href="https://github.com/wiildflover">Wildflover</a>
 </p>
+
